@@ -1,9 +1,10 @@
 import React from 'react';
 import ToggleMood from '../../component/ToggleMood';
+import Button from '../../component/Button';
 
 const Navigation = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -21,7 +22,7 @@ const Navigation = () => {
               <li><a>Item 3</a></li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">DoYoga</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -40,7 +41,8 @@ const Navigation = () => {
         </div>
         <div className="navbar-end">
         <ToggleMood></ToggleMood>
-          <a className="btn">Button</a>
+          <button className='bg-green-800 btn font-bold'>login</button>
+          <Button>logout</Button>
         </div>
       </div>
     );

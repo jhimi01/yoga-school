@@ -5,17 +5,20 @@ const ToggleMood = () => {
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    document.querySelector('html').setAttribute('data-theme', theme);
+    const htmlElement = document.querySelector('html');
+    if (htmlElement) {
+      htmlElement.setAttribute('data-theme', theme);
+    }
   }, [theme]);
 
   const handleToggle = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === 'light' ? 'black' : 'light');
   };
 
   return (
     <>
       <button className='text-3xl' onClick={handleToggle}>
-        {theme === 'dark' ? <BsFillMoonFill /> : <BsFillSunFill />}
+        {theme === 'black' ? <BsFillMoonFill /> : <BsFillSunFill />}
       </button>
     </>
   );
