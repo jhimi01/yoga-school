@@ -41,7 +41,7 @@ const Navigation = () => {
         </div>
         <div className="navbar-end">
         <ToggleMood></ToggleMood>
-          <button className='bg-green-800 btn font-bold'>login</button>
+          {/* <button className='bg-green-800 btn font-bold'>login</button> */}
           <Button>logout</Button>
         </div>
       </div>
