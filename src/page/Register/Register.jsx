@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { AiFillEye } from 'react-icons/ai';
+import { AiFillEyeInvisible } from 'react-icons/ai';
 
 const Register = () => {
+  const [show, setShow] = useState(false)
     const { register, formState: { errors }, handleSubmit, control, reset} = useForm()
     const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext)
    
@@ -43,15 +46,17 @@ const Register = () => {
   {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
 </div>
 
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password" {...register("password", { 
+              <input type={show? "text" : "password"} {...register("password", { 
                 required: true,
                 minLength: 7,
                 maxLength: 20,
                  })} placeholder="password" className="input input-bordered rounded-none" />
+                 <p className='absolute right-3 top-[52px]' onClick={()=>{setShow(!show)}}>{show? <AiFillEyeInvisible className='text-xl'/> : <AiFillEye className='text-xl'/> }</p>
+
               {errors.password?.type === 'minLength' && <span className="text-red-500 text-sm">Password must be at least 7 characters</span>}
               {errors.password?.type === 'maxLength' && <span className="text-red-500 text-sm">Password must be less than 20 characters</span>}
               {errors.password?.type === 'required' && <span className="text-red-500 text-sm">This field is required</span>}
