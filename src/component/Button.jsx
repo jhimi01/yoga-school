@@ -1,10 +1,20 @@
 import React from 'react';
 import { Children } from 'react';
 
-const Button = ({children}) => {
+const Button = ({children, color}) => {
+    const buttonStyle = {
+        border: 'none',
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: '20px',
+        borderBottomRightRadius: '0',
+        borderBottomLeftRadius: '20px',
+        backgroundColor: color, // Set the background color based on the "color" prop
+      };
     return (
         <div>
-            <button className="bg-green-800 btn font-bold" style={{borderTopLeftRadius:0, borderTopRightRadius:'20px',borderBottomRightRadius:'0', borderBottomLeftRadius:'20px'}}>{children}</button>
+             <button className="btn font-bold px-10" style={buttonStyle}>
+        {children}
+      </button>
         </div>
     );
 };
