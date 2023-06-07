@@ -1,60 +1,89 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import './Home.css'
 import Button from '../../component/Button';
+import PopularClasess from './PopularClasess';
+import PopularInstructor from './PopularInstructor';
+import ExtraSection from './ExtraSection';
+// Import the CSS module for customizing the AwesomeSlider
+// import styles from './AwesomeSlider.module.css';
 
 const Home = () => {
   return (
-      <AwesomeSlider animation="cubeAnimation" className='slider-content'>
-
-
-<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/fQcFDMw/pexels-kampus-production-6298301-1.jpg")', backgroundPosition: '100% 100%' }}>
-  <div className="hero-overlay bg-opacity-20"></div>
+     <>
+       <div>
+       <AwesomeSlider
+      animation="cubeAnimation"
+      className="slider-content"
+      >
+<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/9Z2rp4P/pexels-shu-lei-13849284-1.jpg")', backgroundPosition: '100% 100%' }}>
+  <div className="hero-overlay bg-opacity-40"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <h4 className='subheading'>Welcome to Yogabest</h4>
+      <h1 className="text-6xl fontStyle">Yoga Enhances Your Life</h1>
+      <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+      <Button color="white">DoYoga</Button>
+    </div>
+  </div>
+</div>
+
+<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/fQcFDMw/pexels-kampus-production-6298301-1.jpg")', backgroundPosition: '100% 100%' }}>
+  <div className="hero-overlay bg-opacity-50"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+    <h4 className='subheading'>Welcome to Yogabest</h4>
+      <h1 className="text-6xl fontStyle">Yoga Enhances Your Life</h1>
+      <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
     <Button color="pink">DoYoga</Button>
     </div>
   </div>
 </div>
         
 <div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/Gntztyf/pexels-chevanon-photography-317155-2.jpg")', backgroundPosition: '100% 100%' }}>
-  <div className="hero-overlay bg-opacity-0"></div>
+  <div className="hero-overlay bg-opacity-10"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <h4 className='subheading'>Welcome to Yogabest</h4>
+      <h1 className="text-6xl fontStyle">Yoga Enhances Your Life</h1>
+      <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
       <Button color="#0071be">DoYoga</Button>
-    </div>
-  </div>
-</div>
-         
-<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/9Z2rp4P/pexels-shu-lei-13849284-1.jpg")', backgroundPosition: '100% 100%' }}>
-  <div className="hero-overlay bg-opacity-50"></div>
-  <div className="hero-content text-center text-neutral-content">
-    <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <Button color="white">DoYoga</Button>
     </div>
   </div>
 </div>
           
 <div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/jJGYL6D/pexels-savanna-goldring-5184327-1.jpg")', backgroundPosition: '100% 100%', objectFit:'cover' }}>
-  <div className="hero-overlay bg-opacity-20"></div>
+  <div className="hero-overlay bg-opacity-40"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <h4 className='subheading'>Welcome to Yogabest</h4>
+      <h1 className="text-6xl fontStyle">Yoga Enhances Your Life</h1>
+      <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
       <Button color="#b5ad9f">DoYoga</Button>
     </div>
   </div>
 </div>
       </AwesomeSlider>
+       </div>
+
+       <div>
+        <ExtraSection></ExtraSection>
+       </div>
+
+<div className='my-10'>
+    
+<PopularClasess></PopularClasess>
  
+</div>
+
+<div className='my-10'>
+    
+<PopularInstructor></PopularInstructor>
+ 
+</div>
+     </>
   );
 };
 
