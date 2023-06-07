@@ -68,11 +68,11 @@ const Home = () => {
       </AwesomeSlider>
        </div>
 
-       <div>
+       <div className='mt-28 mx-auto w-full md:w-5/6'>
         <ExtraSection></ExtraSection>
        </div>
 
-<div className='my-10'>
+<div className='my-10 '>
     
 <PopularClasess></PopularClasess>
  
