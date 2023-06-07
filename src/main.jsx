@@ -13,6 +13,7 @@ import Dashboard from './page/Dashboard/Dashboard';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Login from './page/Login/Login';
 import Register from './page/Register/Register';
+import Error from './page/Error';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {path:'/sing-up', element: <Register />},
     ]
   },
+  {
+    path:'*',
+    element: <Error />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
