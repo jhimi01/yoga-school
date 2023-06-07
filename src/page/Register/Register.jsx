@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit, control, reset} = useForm()
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-  
+    const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext)
    
     const onSubmit=(data)=>{
         reset()
