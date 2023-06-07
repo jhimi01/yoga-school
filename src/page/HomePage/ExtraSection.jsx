@@ -15,7 +15,7 @@ const ExtraSection = () => {
 
         <div className='bg-gray-100 rounded-md p-8'>
           <h4 className='text-2xl font-semibold mb-4'>About</h4>
-          <p className='text-gray-500'>
+          <p className='text-gray-500' style={{letterSpacing:'1.5px'}}>
           It began as a spiritual practice but has become popular as a way of promoting physical and mental well-being. Although classical yoga also includes other elements, yoga as practiced in the United States typically emphasizes physical postures (asanas), breathing techniques (pranayama), and meditation (dyana).
           </p>
         </div>
