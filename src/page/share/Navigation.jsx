@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ToggleMood from '../../component/ToggleMood';
 import Button from '../../component/Button';
-import { NavLink} from 'react-router-dom';
+import { Link, NavLink} from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Navigation = () => {
+  const {user, logout} = useContext(AuthContext)
+
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{})
+    .catch(errors=>{
+      console.log(errors)
+    })
+  }
+  
   const navoptions = (
     <>
       <li className='font-bold'><NavLink to='/' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white" : ""  }>Home</NavLink></li>
@@ -41,10 +52,28 @@ const Navigation = () => {
          <ToggleMood></ToggleMood>
          </div>
         <div>
-        <Button>logout</Button>
+        {user?  <div className="dropdown dropdown-end">
+      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+        <img src={user?.photoURL} alt="User Avatar" />
+        </div>
+      </label>
+      <ul tabIndex={0} style={{borderTopLeftRadius:0, borderTopRightRadius:'20px',borderBottomRightRadius:'0', borderBottomLeftRadius:'20px'}} className=" p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 mt-5 font-bold">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <div onClick={handleLogout}><li><a>Logout</a></li></div>
+      </ul>
+    </div> : <Link to='/sing-up'><Button>login</Button></Link>}
+        
+        
+   
+  </div>
         </div>
         </div>
-      </div>
     </div>
   );
 };

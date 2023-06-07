@@ -9,6 +9,7 @@ import { AiFillEyeInvisible } from 'react-icons/ai';
 const Register = () => {
   const [show, setShow] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false); // Updated initial state to false
+  const [errortext, setErrortectext] = useState('');
   const { register, formState: { errors }, handleSubmit, control, reset, watch } = useForm();
 
   const password = watch('password');
@@ -20,17 +21,33 @@ const Register = () => {
   // }, [password, watch]);
   
   const onSubmit = (data) => {
-    if (data.password == data.confirm-password) {
-      console.log('sdfds')
-      setPasswordMatch(true)
+    if (data.password === data["confirm-password"]) {
+      // Passwords match, proceed with registration
+      console.log(data);
+      setErrortectext('');
+      // Call your registration or signup function here
+    } else {
+      // Passwords do not match
+      setErrortectext('Passwords do not match');
     }
-    console.log(data);
-    reset();
   };
+
+  const handleGoogle=()=>{
+    loginWithGoogle()
+    .then(result => {
+      const userloogem = result.user
+      console.log(userloogem)
+    })
+    .catch(errors=>{
+      console.log(errors)
+    })
+  }
+
+
   return (
-    <div className='md:flex items-center justify-between'>
-      <div className='w-full h-[100vh]'>
-        <img className='w-full h-full object-cover' src="https://i.ibb.co/h9mM4CV/pexels-hatice-baran-14252564.jpg" alt="" />
+    <div className='md:flex items-start justify-center'>
+      <div className='w-full h-[100vh] mt-20'>
+        <img className='w-full h-full object-cover' src="https://i.ibb.co/tCnwMJp/pexels-valeria-ushakova-3094215.jpg" alt="" />
       </div>
 
       <div className='w-full mt-20'>
@@ -57,7 +74,9 @@ const Register = () => {
             <input {...register("photo", { required: true })} type="url" placeholder="photo URL" className="input input-bordered rounded-none" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
+       
 
+          {/* Password */}
           <div className="form-control relative">
             <label className="label">
               <span className="label-text">Password</span>
@@ -79,19 +98,47 @@ const Register = () => {
             <label className="label">
               <span className="label-text">Confirm Password</span>
             </label>
-            <input type={show ? "text" : "password"} {...register("confirm-password", {
-              required: true,
-              minLength: 7,
-              maxLength: 20,
-            })} placeholder="confirm password" className="input input-bordered rounded-none" />
+            <input
+  type={show ? 'text' : 'password'}
+  {...register('confirm-password', {
+    required: true,
+    minLength: 7,
+    maxLength: 20,
+    validate: (value) => value === password, // Add validation function
+  })}
+  placeholder="confirm password"
+  className="input input-bordered rounded-none"
+/>
+
             <p className='absolute right-3 top-[52px]' onClick={() => { setShow(!show) }}>{show ? <AiFillEyeInvisible className='text-xl' /> : <AiFillEye className='text-xl' />}</p>
 
-            {!passwordMatch ? <span className="text-red-500 text-sm">Passwords do not match</span> : ''}
+            {errors['confirm-password']?.type === 'required' && (
+  <span className="text-red-500 text-sm">This field is required</span>
+)}
+{errors['confirm-password']?.type === 'minLength' && (
+  <span className="text-red-500 text-sm">Password must be at least 7 characters</span>
+)}
+{errors['confirm-password']?.type === 'maxLength' && (
+  <span className="text-red-500 text-sm">Password must be less than 20 characters</span>
+)}
+{errors['confirm-password']?.type === 'validate' && (
+  <span className="text-red-500 text-sm">Passwords do not match</span>
+)}
+
+
+{/* now make if the button will be disable initially after confirm password is correct make the button the button able to click  */}
+
+
+
+            {/* {!passwordMatch && <span className="text-red-500 text-sm">{errortext}</span>} */}
+            {/* {!passwordMatch ? <span className="text-red-500 text-sm">Passwords do not match</span> : ''} */}
 
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
             </label>
           </div>
+
+          {/* submit button */}
           <div className="form-control mt-6">
             <input className="btn bg-base-300 rounded-none" type="submit" value='signup' disabled={passwordMatch} /> {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
           </div>
@@ -101,7 +148,7 @@ const Register = () => {
 
 
         <div className='text-center mb-5'>
-          <button className="btn bg-base-300 rounded-none w-5/6">Sign In with <FcGoogle className='text-2xl' /></button>
+          <button onClick={handleGoogle} className="btn bg-base-300 rounded-none w-5/6">Sign In with <FcGoogle className='text-2xl' /></button>
         </div>
       </div>
     </div>
