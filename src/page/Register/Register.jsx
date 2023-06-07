@@ -25,11 +25,16 @@ const Register = () => {
       // Passwords match, proceed with registration
       console.log(data);
       setErrortectext('');
+      setPasswordMatch(false);
       // Call your registration or signup function here
+      reset()
     } else {
       // Passwords do not match
       setErrortectext('Passwords do not match');
+      setPasswordMatch(true);
+      reset()
     }
+
   };
 
   const handleGoogle=()=>{
@@ -140,7 +145,7 @@ const Register = () => {
 
           {/* submit button */}
           <div className="form-control mt-6">
-            <input className="btn bg-base-300 rounded-none" type="submit" value='signup' disabled={passwordMatch} /> {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
+            <input className="btn bg-base-300 rounded-none" type="submit" value='signup'  disabled={passwordMatch} /> {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
           </div>
           <Link to='/login'><p className='text-sm text-blue-700 underline'>Already have an account? Login.</p></Link>
           <div className="divider">OR</div>
