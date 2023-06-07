@@ -12,6 +12,7 @@ const Register = () => {
     const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext)
    
     const onSubmit=(data)=>{
+      console.log(data)
         reset()
     }
   
@@ -60,6 +61,23 @@ const Register = () => {
               {errors.password?.type === 'minLength' && <span className="text-red-500 text-sm">Password must be at least 7 characters</span>}
               {errors.password?.type === 'maxLength' && <span className="text-red-500 text-sm">Password must be less than 20 characters</span>}
               {errors.password?.type === 'required' && <span className="text-red-500 text-sm">This field is required</span>}
+            </div>
+
+            {/* confirm password */}
+            <div className="form-control relative">
+              <label className="label">
+                <span className="label-text">Confirm Password</span>
+              </label>
+              <input type={show? "text" : "password"} {...register("confirm-password", { 
+                required: true,
+                minLength: 7,
+                maxLength: 20,
+                 })} placeholder="condirm password" className="input input-bordered rounded-none" />
+                 <p className='absolute right-3 top-[52px]' onClick={()=>{setShow(!show)}}>{show? <AiFillEyeInvisible className='text-xl'/> : <AiFillEye className='text-xl'/> }</p>
+{/* 
+             {errors.password?.type === 'minLength' && <span className="text-red-500 text-sm">Password must be at least 7 characters</span>}
+              {errors.password?.type === 'maxLength' && <span className="text-red-500 text-sm">Password must be less than 20 characters</span>}
+              {errors.password?.type === 'required' && <span className="text-red-500 text-sm">This field is required</span>}  */}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
               </label>
