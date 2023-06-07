@@ -7,13 +7,19 @@ import {
 import "./index.css";
 import MainLayout from './MainLayout/MainLayout.jsx';
 import Home from './page/HomePage/Home.jsx';
+import Instructor from './page/Instructor/Instructor';
+import Clasess from './page/Clasess/Clasess';
+import Dashboard from './page/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
-      {path:'/', element: <Home />}
+      {path:'/', element: <Home />},
+      {path:'/instructors', element: <Instructor />},
+      {path:'/classes', element: <Clasess />},
+      {path:'/dashboard', element: <Dashboard />},
     ]
   },
 ]);

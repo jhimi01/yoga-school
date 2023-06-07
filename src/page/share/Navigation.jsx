@@ -1,51 +1,52 @@
 import React from 'react';
 import ToggleMood from '../../component/ToggleMood';
 import Button from '../../component/Button';
+import { NavLink} from 'react-router-dom';
 
 const Navigation = () => {
-    return (
-        <div className="navbar">
+  const navoptions = (
+    <>
+      <li className='font-bold'><NavLink to='/' className={({ isActive}) =>   isActive ? "rounded-none bg-white" : "rounded-0"  }>Home</NavLink></li>
+      <li className='font-bold'><NavLink to='/instructors' className={({ isActive}) =>   isActive ? "rounded-none bg-white" : ""  }>Instructors</NavLink></li>
+      <li className='font-bold'><NavLink to='/classes' className={({ isActive}) =>   isActive ? "rounded-none bg-white" : ""  }>Classes</NavLink></li>
+      <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-none bg-white" : ""  }>Dashboard</NavLink></li>
+    </>
+  );
+
+  // fixed top-0 left-0 right-0 flex justify-center
+
+  return (
+    <div className="navbar top-0 z-10 fixed border-b backdrop-filter backdrop-blur-lg">
+      <div className="w-5/6 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
             </label>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </li>
-              <li><a>Item 3</a></li>
+            <ul tabIndex={0} style={{borderTopLeftRadius:0, borderTopRightRadius:'20px',borderBottomRightRadius:'0', borderBottomLeftRadius:'20px'}} className="menu menu-sm dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52">
+              {navoptions}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">DoYoga</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><a>Item 1</a></li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li><a>Submenu 1</a></li>
-                  <li><a>Submenu 2</a></li>
-                </ul>
-              </details>
-            </li>
-            <li><a>Item 3</a></li>
+            {navoptions}
           </ul>
         </div>
-        <div className="navbar-end">
-        <ToggleMood></ToggleMood>
-          {/* <button className='bg-green-800 btn font-bold'>login</button> */}
-          <Button>logout</Button>
+        <div className="navbar-end items-center flex gap-5">
+         <div className='hidden lg:flex'>
+         <ToggleMood></ToggleMood>
+         </div>
+        <div>
+        <Button>logout</Button>
+        </div>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Navigation;
