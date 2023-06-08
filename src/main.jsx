@@ -14,6 +14,7 @@ import AuthProvider from './AuthProvider/AuthProvider';
 import Login from './page/Login/Login';
 import Register from './page/Register/Register';
 import Error from './page/Error';
+import PrivateRoute from './page/route/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
       {path:'/', element: <Home />},
       {path:'/instructors', element: <Instructor />},
       {path:'/classes', element: <Clasess />},
-      {path:'/dashboard', element: <Dashboard />},
+      {path:'/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute>,
+      children:[
+        {path:'/dashboard/addclass', element: <p>add class</p>},
+        {path:'/dashboard/myclass', element: <p>my classes</p>}
+      ]
+    },
       {path:'/login', element: <Login />},
       {path:'/sing-up', element: <Register />},
     ]

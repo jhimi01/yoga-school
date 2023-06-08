@@ -30,7 +30,7 @@ const Navigation = () => {
   return (
     <div className="navbar top-0 z-10 fixed border-b backdrop-filter backdrop-blur-lg">
       <div className="w-5/6 mx-auto">
-        <div className="navbar-start">
+        <div className="navbar-start flex">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,8 +69,6 @@ const Navigation = () => {
         <div onClick={handleLogout}><li><a>Logout</a></li></div>
       </ul>
     </div> : <Link to='/sing-up'><Button>login</Button></Link>}
-        
-        
    
   </div>
         </div>

@@ -36,20 +36,47 @@ const Register = () => {
 
 
       // // upload img to imgbb
-      const photo = data.photo[0];
-      console.log(photo)
-      const formData = new FormData();
-      formData.append('photo', photo)
-      // // console.log(photo);
-      fetch(img_hosting_url, {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.json())
-      .then(imgResponse => {
-        console.log(imgResponse);
-      })
-      
+      // const photo = data.photo[0];
+      // if (photo) {
+      //   const formData = new FormData();
+      //   formData.append('photo', photo)
+      //   // // console.log(photo);
+      //   // Rest of the code to send the request
+      //   fetch(img_hosting_url, {
+      //     method: 'POST',
+      //     body: formData
+      //   })
+      //   .then(res => res.json())
+      //   .then(imgResponse => {
+      //     const photoURL = imgResponse.data.display_url
+      //        // Call your registration or signup function here
+      // signupEmail(data.email, data.password)
+      // .then((result) => {
+      //   const loggedUser = result.user;
+      //   console.log(loggedUser);
+
+      //   updateUserProfile(data.name, photoURL)
+      //   .then(()=>{
+      //     saveUser(loggedUser)
+      //     setErrortectext('');
+      //     navigate(from, {replace: true})
+      //     Swal.fire({
+      //       position: 'top-end',
+      //       icon: 'success',
+      //       title: 'logged in successfully',
+      //       showConfirmButton: false,
+      //       timer: 1500
+      //     })
+      //     reset()
+      //   })
+      // }).catch(err => {
+      //   setErrortectext(err.message);
+      //   console.log(err)})
+      //   })
+      // } else {
+      //   // Handle the case when photo data is empty
+      //   console.log('No photo data available');
+      // }
 
       // Call your registration or signup function here
       signupEmail(data.email, data.password)
@@ -210,22 +237,22 @@ const Register = () => {
             {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
           
-          {/* <div className="form-control">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="url" placeholder="photo URL" className="input input-bordered rounded-none" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div> */}
+          </div>
 
 
-          <div className="form-control">
+          {/* <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="file"  accept="image/*" placeholder="photo URL" className="input input-bordered rounded-none pt-2" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div>
+          </div> */}
 
        
 

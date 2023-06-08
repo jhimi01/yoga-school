@@ -50,6 +50,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
             setUser(loggedInUser)
+            setLoader(false)
         })
         return()=>{
             unsibscribe()
