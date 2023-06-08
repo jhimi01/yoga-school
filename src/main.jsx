@@ -27,7 +27,11 @@ const router = createBrowserRouter([
       {path:'/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute>,
       children:[
         {path:'/dashboard/addclass', element: <p>add class</p>},
-        {path:'/dashboard/myclass', element: <p>my classes</p>}
+        {path:'/dashboard/myclass', element: <p>my classes</p>},
+        {path:'/dashboard/manageclass', element: <p>manage classes</p>},
+        {path:'/dashboard/manageuser', element: <p>manage user</p>},
+        {path:'/dashboard/my-selected-classes', element: <p>My Selected classes</p>},
+        {path:'/dashboard/my-enrolled-classes', element: <p>My enrolled classes</p>},
       ]
     },
       {path:'/login', element: <Login />},

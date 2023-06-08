@@ -11,7 +11,7 @@ const Dashboard = () => {
     const {user} = useContext(AuthContext)
     console.log(user)
   return (
-    <div className="flex flex-col md:flex-row h-screen mt-20">
+    <div className="flex flex-col md:flex-row h-screen mt-20 overflow-y-auto">
       {/* Sidebar */}
       <aside className="w-full md:w-1/5">
 
@@ -22,6 +22,9 @@ const Dashboard = () => {
 
         <nav className="p-4">
           <ul className="space-y-2">
+
+          {/* for instructor */}
+          <p>for instructor</p>
             <NavLink to="/dashboard/addclass" className={({ isActive}) =>   isActive ? "bg-black" : ""  }>
               <li>
                 <a className="btn bg-base-300 rounded-none mb-4 w-full">
@@ -43,6 +46,44 @@ const Dashboard = () => {
                 <a className="btn bg-base-300 rounded-none mb-4 w-full"> 
                 <AiFillHome className="text-2xl"/> Home</a>
                 
+              </li>
+            </Link>
+
+
+
+            {/* for admin */}
+            <p>for admin</p>
+            <Link to="/dashboard/manageclass">
+              <li>
+                <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                 <GiMeditation className="text-2xl"/> Manage Classes
+                </a>
+              </li>
+            </Link>
+
+            <Link to="/dashboard/manageuser">
+              <li>
+                 <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                  Manage Users
+                </a>
+              </li>
+            </Link>
+
+            {/* for students */}
+            <p>for students</p>
+            <Link to="/dashboard/my-selected-classes">
+              <li>
+                 <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                  My Selected Classes
+                </a>
+              </li>
+            </Link>
+
+            <Link to="/dashboard/my-enrolled-classes">
+              <li>
+                 <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                  My Enrolled Classes
+                </a>
               </li>
             </Link>
           </ul>
