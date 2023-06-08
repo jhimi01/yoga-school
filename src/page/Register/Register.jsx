@@ -6,27 +6,42 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 
+
+const img_hosting_token = import.meta.env.VITE_UPLOAD_TOKEN;
+// https://api.imgbb.com/1/upload
+
 const Register = () => {
   const [show, setShow] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false); // Updated initial state to false
   const [errortext, setErrortectext] = useState('');
   const { register, formState: { errors }, handleSubmit, control, reset, watch } = useForm();
-
   const password = watch('password');
 
-  const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext);
+  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
 
-  // useEffect(() => {
-  //   setPasswordMatch(password === watch('confirm-password'));
-  // }, [password, watch]);
+  const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext);
   
+
+  // submit button
   const onSubmit = (data) => {
     if (data.password === data["confirm-password"]) {
       // Passwords match, proceed with registration
       console.log(data);
       setErrortectext('');
       setPasswordMatch(false);
+      const photo = data.photo[0];
+      console.log(photo);
       // Call your registration or signup function here
+      signupEmail(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        updateUserProfile(data.name, data.photoURL)
+        .then(()=>{
+
+        })
+      }).catch(err => console.log(err))
       reset()
     } else {
       // Passwords do not match
@@ -72,13 +87,24 @@ const Register = () => {
             <input {...register("email", { required: true })} type="text" placeholder="email" className="input input-bordered rounded-none" />
             {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
-          <div className="form-control">
+          
+          {/* <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="url" placeholder="photo URL" className="input input-bordered rounded-none" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
+          </div> */}
+
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input {...register("photo", { required: true })} type="file"  accept="image/*" placeholder="photo URL" className="input input-bordered rounded-none pt-2" />
+            {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
+
        
 
           {/* Password */}

@@ -20,7 +20,8 @@ const Navigation = () => {
       <li className='font-bold'><NavLink to='/' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white" : ""  }>Home</NavLink></li>
       <li className='font-bold'><NavLink to='/instructors' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white" : ""  }>Instructors</NavLink></li>
       <li className='font-bold'><NavLink to='/classes' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Classes</NavLink></li>
-      <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Dashboard</NavLink></li>
+      {user && <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Dashboard</NavLink></li>}
+      {/* <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Dashboard</NavLink></li> */}
     </>
   );
 
