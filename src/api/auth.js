@@ -1,7 +1,8 @@
-export const saveUSer = user =>{
+export const saveUser = user =>{
     const currentUser = {
         name: user.displayName,
-        emial: user.email
+        email: user.email,
+        role: 'student' // Set the role to "student"
     }
     fetch(`http://localhost:5000/users/${user?.email}`, {
         method: 'PUT',

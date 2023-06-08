@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
-import { saveUSer } from '../../api/auth';
+import { saveUser } from '../../api/auth';
 import Swal from 'sweetalert2';
 
 
@@ -22,6 +22,9 @@ const Register = () => {
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
   const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   
 
   // submit button
@@ -33,20 +36,20 @@ const Register = () => {
 
 
       // // upload img to imgbb
-      // // const photo = data.photo[0];
-      // const formData = new FormData();
-      // formData.append('image', data.photo[0])
+      const photo = data.photo[0];
+      console.log(photo)
+      const formData = new FormData();
+      formData.append('photo', photo)
       // // console.log(photo);
-      // fetch(img_hosting_url, {
-      //   method: 'POST',
-      //   body: formData
-      // })
-      // .then(res=>{
-      //   res.json()
-      // }).then(imgResponse => {
-      //   console.log(imgResponse)
-      // })
-
+      fetch(img_hosting_url, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(imgResponse => {
+        console.log(imgResponse);
+      })
+      
 
       // Call your registration or signup function here
       signupEmail(data.email, data.password)
@@ -56,8 +59,9 @@ const Register = () => {
 
         updateUserProfile(data.name, data.photoURL)
         .then(()=>{
-          //  const saveUSer ={ name: data.name, email: data.email}
-          saveUSer(loggedUser)
+          saveUser(loggedUser)
+          setErrortectext('');
+          navigate(from, {replace: true})
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -65,9 +69,12 @@ const Register = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          reset()
         })
-      }).catch(err => console.log(err))
-      reset()
+      }).catch(err => {
+        setErrortectext(err.message);
+        console.log(err)})
+      
     } else {
       // Passwords do not match
       setErrortectext('Passwords do not match');
@@ -107,7 +114,7 @@ const Register = () => {
 
 //         updateUserProfile(data.name, data.photoURL)
 //           .then(() => {
-//             const saveUSer ={ name: data.name, email: data.email };
+//             const saveUser ={ name: data.name, email: data.email };
 //           });
 //       })
 //       .catch(err => console.log(err));
@@ -158,14 +165,12 @@ const Register = () => {
   
 
 
-
-
-
   const handleGoogle=()=>{
     loginWithGoogle()
     .then(result => {
       const loggedUser = result.user
-      saveUSer(loggedUser)
+      saveUser(loggedUser)
+      navigate(from, {replace: true})
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -175,6 +180,7 @@ const Register = () => {
       })
     })
     .catch(errors=>{
+      setErrortectext(errors.message);
       console.log(errors)
     })
   }
@@ -204,22 +210,22 @@ const Register = () => {
             {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
           
-          <div className="form-control">
+          {/* <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="url" placeholder="photo URL" className="input input-bordered rounded-none" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div>
+          </div> */}
 
-{/* 
+
           <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="file"  accept="image/*" placeholder="photo URL" className="input input-bordered rounded-none pt-2" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div> */}
+          </div>
 
        
 
@@ -275,8 +281,6 @@ const Register = () => {
 
 {/* now make if the button will be disable initially after confirm password is correct make the button the button able to click  */}
 
-
-
             {/* {!passwordMatch && <span className="text-red-500 text-sm">{errortext}</span>} */}
             {/* {!passwordMatch ? <span className="text-red-500 text-sm">Passwords do not match</span> : ''} */}
 
@@ -289,6 +293,7 @@ const Register = () => {
           <div className="form-control mt-6">
             <input className="btn bg-base-300 rounded-none" type="submit" value='signup'  disabled={passwordMatch} /> {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
           </div>
+          {errortext && <p className='text-red-500'>{errortext}</p>}
           <Link to='/login'><p className='text-sm text-blue-700 underline'>Already have an account? Login.</p></Link>
           <div className="divider">OR</div>
         </form>

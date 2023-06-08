@@ -4,7 +4,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import { saveUSer } from '../../api/auth';
+import { saveUser } from '../../api/auth';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -38,7 +38,8 @@ const Login = () => {
         loginWithGoogle()
         .then(result => {
           const loggedUser = result.user
-          saveUSer(loggedUser)
+          saveUser(loggedUser)
+          navigate(from, {replace: true})
           Swal.fire({
             position: 'top-end',
             icon: 'success',
