@@ -33,6 +33,7 @@ const Register = () => {
       // matchpass
       setErrortectext('');
       setPasswordMatch(false);
+      console.log(data)
 
 
       // // upload img to imgbb
@@ -84,7 +85,7 @@ const Register = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
 
-        updateUserProfile(data.name, data.photoURL)
+        updateUserProfile(data.name, data.photo)
         .then(()=>{
           saveUser(loggedUser)
           setErrortectext('');
