@@ -34,25 +34,23 @@ const Login = () => {
       };
 
       
-  const handleGoogle=()=>{
-    loginWithGoogle()
-    .then(result => {
-      const loggedUser = result.user
-      console.log(loggedUser)
-      saveUSer(loggedUser)
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'logged in successfully',
-        showConfirmButton: false,
-        timer: 1500
-      })
-    })
-    .catch(errors=>{
-      console.log(errors)
-    })
-  }
-
+      const handleGoogle=()=>{
+        loginWithGoogle()
+        .then(result => {
+          const loggedUser = result.user
+          saveUSer(loggedUser)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'logged in succesfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch(errors=>{
+          console.log(errors)
+        })
+      }
     
     return (
         <div className='md:flex items-center justify-between mt-20'>
