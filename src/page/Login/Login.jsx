@@ -9,13 +9,26 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
     const [show, setShow] = useState(false);
-    const { loginWithGoogle} = useContext(AuthContext);
+    const [error, setError] = useState('')
+    const { loginWithGoogle, loginWithEmail} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit, control, reset, watch } = useForm();
     const onSubmit = (data) => {
-        if (data.password == data.confirm-password) {
-          console.log('sdfds')
-          setPasswordMatch(true)
-        }
+      loginWithEmail(data.email, data.password)
+      .then(result => {
+          console.log(result.user)
+          setError('')
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'logged in successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+      }).catch(error => {
+        console.log(error.message)
+        setError(error.message)
+      })
+
         console.log(data);
         reset();
       };
@@ -49,12 +62,12 @@ const Login = () => {
       <div className='w-full'>
       <h1 className='text-5xl font-semibold text-center'>Please Login</h1>
              <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-          <div className="form-control">
+             <div className="form-control">
             <label className="label">
-              <span className="label-text">Name</span>
+              <span className="label-text">Email</span>
             </label>
-            <input type="text" {...register("name", { required: true })} placeholder="name" name="name" className="input input-bordered rounded-none" />
-            {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
+            <input {...register("email", { required: true })} type="text" placeholder="email" className="input input-bordered rounded-none" />
+            {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
        
 
@@ -74,6 +87,11 @@ const Login = () => {
             {errors.password?.type === 'maxLength' && <span className="text-red-500 text-sm">Password must be less than 20 characters</span>}
             {errors.password?.type === 'required' && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
+            {/* submit button */}
+            <div className="form-control mt-6">
+            <input className="btn bg-base-300 rounded-none" type="submit" value='signup' /> {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
+          </div>
+          {error && <p className='text-red-700'>{error}</p>}
           <Link to='/sing-up'><p className='text-sm text-blue-700 underline'>are you new here? Signup</p></Link>
           <div className="divider">OR</div>
         </form>
