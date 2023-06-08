@@ -5,6 +5,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { AiFillEye } from 'react-icons/ai';
 import { AiFillEyeInvisible } from 'react-icons/ai';
+import { saveUSer } from '../../api/auth';
+import Swal from 'sweetalert2';
 
 
 const img_hosting_token = import.meta.env.VITE_UPLOAD_TOKEN;
@@ -17,7 +19,7 @@ const Register = () => {
   const { register, formState: { errors }, handleSubmit, control, reset, watch } = useForm();
   const password = watch('password');
 
-  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
   const { signupEmail, loginWithGoogle, updateUserProfile } = useContext(AuthContext);
   
@@ -25,12 +27,27 @@ const Register = () => {
   // submit button
   const onSubmit = (data) => {
     if (data.password === data["confirm-password"]) {
-      // Passwords match, proceed with registration
-      console.log(data);
+      // matchpass
       setErrortectext('');
       setPasswordMatch(false);
-      const photo = data.photo[0];
-      console.log(photo);
+
+
+      // // upload img to imgbb
+      // // const photo = data.photo[0];
+      // const formData = new FormData();
+      // formData.append('image', data.photo[0])
+      // // console.log(photo);
+      // fetch(img_hosting_url, {
+      //   method: 'POST',
+      //   body: formData
+      // })
+      // .then(res=>{
+      //   res.json()
+      // }).then(imgResponse => {
+      //   console.log(imgResponse)
+      // })
+
+
       // Call your registration or signup function here
       signupEmail(data.email, data.password)
       .then((result) => {
@@ -39,7 +56,15 @@ const Register = () => {
 
         updateUserProfile(data.name, data.photoURL)
         .then(()=>{
-
+          //  const saveUSer ={ name: data.name, email: data.email}
+          saveUSer(loggedUser)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'logged in successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
       }).catch(err => console.log(err))
       reset()
@@ -52,11 +77,102 @@ const Register = () => {
 
   };
 
+
+
+  // submit button
+// const onSubmit = (data) => {
+//   if (data.password === data["confirm-password"]) {
+//     setErrortectext('');
+//     setPasswordMatch(false);
+
+//     const photo = data.photo[0];
+
+//     const formData = new FormData();
+//     formData.append('image', photo);
+
+//     fetch(img_hosting_url, {
+//       method: 'POST',
+//       body: formData
+//     })
+//     .then(res => res.json()) // Add return statement here
+//     .then(imgResponse => {
+//       console.log(imgResponse);
+//       // Further processing with the image response can be done here
+//     });
+
+//     signupEmail(data.email, data.password)
+//       .then((result) => {
+//         const loggedUser = result.user;
+//         console.log(loggedUser);
+
+//         updateUserProfile(data.name, data.photoURL)
+//           .then(() => {
+//             const saveUSer ={ name: data.name, email: data.email };
+//           });
+//       })
+//       .catch(err => console.log(err));
+//     reset();
+//   } else {
+//     setErrortectext('Passwords do not match');
+//     setPasswordMatch(true);
+//     reset();
+//   }
+// };
+
+
+
+
+
+
+
+  // const onSubmit = (data) => {
+  //   if (data.password === data["confirm-password"]) {
+  //     setErrortectext('');
+  //     setPasswordMatch(false);
+  //     const photo = data.photo[0];
+  
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       console.log(reader.result); // Log the image data as a data URL
+  //     };
+  //     reader.readAsDataURL(photo); // Read the image file as a data URL
+  
+  //     signupEmail(data.email, data.password)
+  //       .then((result) => {
+  //         const loggedUser = result.user;
+  //         console.log(loggedUser);
+  
+  //         updateUserProfile(data.name, data.photoURL)
+  //           .then(() => {
+  //             const saveUser = { name: data.name, email: data.email };
+  //           });
+  //       })
+  //       .catch((err) => console.log(err));
+  //     reset();
+  //   } else {
+  //     setErrortectext('Passwords do not match');
+  //     setPasswordMatch(true);
+  //     reset();
+  //   }
+  // };
+  
+
+
+
+
+
   const handleGoogle=()=>{
     loginWithGoogle()
     .then(result => {
-      const userloogem = result.user
-      console.log(userloogem)
+      const loggedUser = result.user
+      saveUSer(loggedUser)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'logged in succesfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
     .catch(errors=>{
       console.log(errors)
@@ -88,22 +204,22 @@ const Register = () => {
             {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
           
-          {/* <div className="form-control">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="url" placeholder="photo URL" className="input input-bordered rounded-none" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div> */}
+          </div>
 
-
+{/* 
           <div className="form-control">
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
             <input {...register("photo", { required: true })} type="file"  accept="image/*" placeholder="photo URL" className="input input-bordered rounded-none pt-2" />
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div>
+          </div> */}
 
        
 

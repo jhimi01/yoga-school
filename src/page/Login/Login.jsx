@@ -4,6 +4,8 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { saveUSer } from '../../api/auth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -22,8 +24,16 @@ const Login = () => {
   const handleGoogle=()=>{
     loginWithGoogle()
     .then(result => {
-      const userloogem = result.user
-      console.log(userloogem)
+      const loggedUser = result.user
+      console.log(loggedUser)
+      saveUSer(loggedUser)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'logged in successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
     })
     .catch(errors=>{
       console.log(errors)
