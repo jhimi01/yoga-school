@@ -18,8 +18,8 @@ const Home = () => {
       animation="cubeAnimation"
       className="slider-content"
       >
-<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/9Z2rp4P/pexels-shu-lei-13849284-1.jpg")', backgroundPosition: '100% 100%' }}>
-  <div className="hero-overlay bg-opacity-40"></div>
+<div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/YZHLVkB/pexels-natalie-bond-3759660-1.jpg")', backgroundPosition: '100% 100%' }}>
+  <div className="hero-overlay bg-opacity-30"></div>
   <div  className="hero-content text-center text-neutral-content">
     <div className="w-4/5">
     <h4 className='subheading'>Welcome to Yogabest</h4>

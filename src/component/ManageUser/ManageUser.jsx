@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const ManageUser = () => {
   const { user, role } = useContext(AuthContext);
   const [userinfo, setUSerinfo] = useState([]);
-  const [disabled, setDisabled] = useState(false);
+//   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     getAllUser().then((data) => setUSerinfo(data));
@@ -17,9 +17,9 @@ const ManageUser = () => {
 
  const handleInstructor =(email)=>{
     makeInstructor(email).then(()=>{
-        if (role === 'instructor') {
-            setDisabled(true)
-        }
+        // if (role === 'instructor') {
+        //     setDisabled(true)
+        // }
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -31,9 +31,9 @@ const ManageUser = () => {
 }
  const handleAdmin =(email)=>{
     makeAdmin(email).then(()=>{
-        if (role === 'admin') {
-            setDisabled(true)
-        }
+        // if (role === 'admin') {
+        //     setDisabled(true)
+        // }
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -61,11 +61,10 @@ const ManageUser = () => {
         <tbody>
           {/* row 1 */}
           {userinfo.map((item, index) => {
-            // Check if the item.email matches the logged-in user's email
             if (item.email === user?.email) {
-              return null; // Skip rendering this row
-            }
-
+      return null; // Skip rendering this row
+    }
+    
             return (
               <tr key={item._id}>
                 <th>{index + 1}</th>
@@ -78,12 +77,12 @@ const ManageUser = () => {
                 </td>
                 <td>{item.email}</td>
                 <th>
-                  <button onClick={()=>handleAdmin(item.email)} disabled={disabled} className="btn btn-ghost btn-xs bg-base-200">
+                  <button onClick={()=>handleAdmin(item.email)} className="btn btn-ghost btn-xs bg-base-200">
                     {item.role}
                   </button>
                 </th>
                 <th>
-                  <button onClick={()=>handleInstructor(item.email)} disabled={disabled} className="btn btn-ghost btn-xs bg-base-200">
+                  <button onClick={()=>handleInstructor(item.email)} className="btn btn-ghost btn-xs bg-base-200">
                     {item.role}
                   </button>
                 </th>
@@ -158,7 +157,14 @@ export default ManageUser;
 //           </tr>
 //         </thead>
 //         <tbody>
-//           {userinfo.map((item, index) => (
+//           {userinfo.map((item, index) => 
+//           {
+
+//             if (item.email === user?.email) {
+//       return null; // Skip rendering this row
+//     }
+
+//            return (
 //             <tr key={item._id}>
 //               <th>{index + 1}</th>
 //               <td>
@@ -188,7 +194,10 @@ export default ManageUser;
 //                 </button>
 //               </th>
 //             </tr>
-//           ))}
+//           )
+//           }
+          
+//           )}
 //         </tbody>
 //       </table>
 //     </div>
