@@ -18,7 +18,7 @@ const Instructor = () => {
     return (
         <div>
            <SubBanner bannerimg={'https://i.ibb.co/drZK2d6/pexels-yan-krukau-8436464-2.jpg'} heading={'Instructors'}></SubBanner>
-           <div className='grid md:grid-cols-4 mt-32 grid-cols-1 mx-auto md:w-5/6 w-full gap-11'>
+           <div className='grid md:grid-cols-3 lg:grid-cols-4 mt-32 grid-cols-1 mx-auto md:w-5/6 w-full gap-11'>
             {instructors.map((instructor) => <SingleInstructor instructor={instructor}></SingleInstructor>)}
            </div>
         </div>
