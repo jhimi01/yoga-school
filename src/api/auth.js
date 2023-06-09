@@ -72,3 +72,16 @@ export const makeAdmin = async (email) => {
         return data
     })
 }
+
+
+// instructor user
+export const allInsructor = async () =>{
+    return fetch('http://localhost:5000/users/instructor')
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        return data
+    })
+}
+
+

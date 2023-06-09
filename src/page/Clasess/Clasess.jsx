@@ -1,9 +1,10 @@
 import React from 'react';
+import SubBanner from '../../component/SubBanner';
 
 const Clasess = () => {
     return (
         <div>
-               <h3>this is classes page</h3>
+              <SubBanner bannerimg={'https://i.ibb.co/tqL8Sgk/pexels-elina-fairytale-3822356-1.jpg'} heading={'Classes'}></SubBanner>
         </div>
     );
 };
