@@ -15,6 +15,7 @@ import Login from './page/Login/Login';
 import Register from './page/Register/Register';
 import Error from './page/Error';
 import PrivateRoute from './page/route/PrivateRoute';
+import ManageUser from './component/ManageUser/ManageUser';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         {path:'/dashboard/addclass', element: <p>add class</p>},
         {path:'/dashboard/myclass', element: <p>my classes</p>},
         {path:'/dashboard/manageclass', element: <p>manage classes</p>},
-        {path:'/dashboard/manageuser', element: <p>manage user</p>},
+        {path:'/dashboard/manageuser', element: <ManageUser></ManageUser>},
         {path:'/dashboard/my-selected-classes', element: <p>My Selected classes</p>},
         {path:'/dashboard/my-enrolled-classes', element: <p>My enrolled classes</p>},
       ]

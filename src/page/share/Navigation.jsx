@@ -68,7 +68,7 @@ const Navigation = () => {
         </li>
         <div onClick={handleLogout}><li><a>Logout</a></li></div>
       </ul>
-    </div> : <Link to='/sing-up'><Button>login</Button></Link>}
+    </div> : <Link to='/login'><Button>login</Button></Link>}
    
   </div>
         </div>

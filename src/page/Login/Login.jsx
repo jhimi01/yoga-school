@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { saveUser } from '../../api/auth';
 import Swal from 'sweetalert2';
@@ -12,11 +12,16 @@ const Login = () => {
     const [error, setError] = useState('')
     const { loginWithGoogle, loginWithEmail} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit, control, reset, watch } = useForm();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const onSubmit = (data) => {
       loginWithEmail(data.email, data.password)
       .then(result => {
           console.log(result.user)
           setError('')
+          navigate(from, {replace: true})
           Swal.fire({
             position: 'top-end',
             icon: 'success',

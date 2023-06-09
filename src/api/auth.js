@@ -13,3 +13,30 @@ export const saveUser = user =>{
     }).then(res => res.json())
     .then(data => console.log(data))
 }
+
+
+export const getRole = async (email) => {
+    try {
+      const response = await fetch(`http://localhost:5000/users/role/${email}`);
+      if (response.ok) {
+        const user = await response.json();
+        return user?.[0]?.role; // Assuming the server returns an array with one user object
+      } else {
+        throw new Error('Failed to fetch user role');
+      }
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
+  // get all user
+export const getAllUser = async()=>{
+    return  fetch(`http://localhost:5000/users`)
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        return data
+    })
+    
+}
