@@ -35,6 +35,19 @@ const Register = () => {
       setPasswordMatch(false);
       console.log(data)
 
+      const capitalLetterRegex = /^(?=.*[A-Z])/;
+      const specialCharacterRegex = /^(?=.*[!@#$%^&*])/;
+
+      if (!capitalLetterRegex.test(data.password)) {
+        setErrortectext('Password must contain at least one capital letter');
+        return;
+      }
+
+      if (!specialCharacterRegex.test(data.password)) {
+        setErrortectext('Password must contain at least one special character');
+        return;
+      }
+
 
       // // upload img to imgbb
       // const photo = data.photo[0];
