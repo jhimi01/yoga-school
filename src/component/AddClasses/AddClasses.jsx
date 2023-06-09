@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { addclass } from "../../api/class";
+import Swal from "sweetalert2";
 
 const AddClasses = () => {
 
@@ -22,22 +24,35 @@ const AddClasses = () => {
         availableSeats,
         price,
         status: 'pending',
+        Enrolled: 0
       };
-  
-      // Send the newClass object to your backend for database insertion
-      // Example: sendToBackend(newClass);
-      
-      // Clear the form after submission
+
+      addclass(newClass)
+      .then(data => {
+        console.log(data)
+        if (data.insertedId) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+          // Clear the form after submission
       setClassName('');
       setClassImage('');
       setAvailableSeats(0);
       setPrice(0);
+      })
+      
+    
     };
 
     return (
         <div className="max-w-md mx-auto">
       <form onSubmit={handleSubmit} className="space-y-6">
-          <h2 className="text-5xl font-semibold text-center">Add class</h2>
+          <h2 className="text-5xl  text-center">Add class</h2>
       <div className="flex items-center justify-between">
         <div>
           <label htmlFor="className" className="block text-sm font-medium text-gray-700">
@@ -140,7 +155,7 @@ const AddClasses = () => {
 
 
         <div className="text-center">
-          <button type="submit" className="btn bg-base-300">
+          <button type="submit" className="btn bg-base-300 rounded-none">
             Add class
           </button>
         </div>

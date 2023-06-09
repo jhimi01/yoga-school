@@ -17,6 +17,7 @@ import Error from './page/Error';
 import PrivateRoute from './page/route/PrivateRoute';
 import ManageUser from './component/ManageUser/ManageUser';
 import AddClasses from './component/AddClasses/AddClasses';
+import InstructorClasses from './page/Instructor/InstructorClasses';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       {path:'/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute>,
       children:[
         {path:'/dashboard/addclass', element: <AddClasses></AddClasses>},
+        {path:'/dashboard/myclass', element: <InstructorClasses></InstructorClasses>},
         {path:'/dashboard/myclass', element: <p>my classes</p>},
         {path:'/dashboard/manageclass', element: <p>manage classes</p>},
         {path:'/dashboard/manageuser', element: <ManageUser></ManageUser>},
