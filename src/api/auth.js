@@ -40,3 +40,35 @@ export const getAllUser = async()=>{
     })
     
 }
+
+// make instructor to student
+export const makeInstructor = async (email) => {
+    return fetch(`http://localhost:5000/users/instructor/${email}`,{
+        method: 'PATCH',
+        headers:{
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({email})
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        return data
+    })
+}
+
+// make instructor to student
+export const makeAdmin = async (email) => {
+    return fetch(`http://localhost:5000/users/admin/${email}`,{
+        method: 'PATCH',
+        headers:{
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({email})
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        return data
+    })
+}

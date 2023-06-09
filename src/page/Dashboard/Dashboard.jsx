@@ -11,7 +11,7 @@ const Dashboard = () => {
     const {user, role} = useContext(AuthContext)
     console.log(role)
   return (
-    <div className="flex flex-col md:flex-row h-screen mt-20 overflow-y-auto">
+    <div className="flex flex-col md:flex-row  mt-20 h-full">
       {/* Sidebar */}
       <aside className="w-full md:w-1/5">
 
@@ -25,7 +25,7 @@ const Dashboard = () => {
           <ul className="space-y-2">
 
           {/* for instructor */}
-          <p>for instructor</p>
+          {/* <p>for instructor</p> */}
           {role && role === 'instructor' ? <>
           <NavLink to="/dashboard/addclass" className={({ isActive}) =>   isActive ? "bg-black" : ""  }>
               <li>
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
 
             {/* for admin */}
-            <p>for admin</p>
+            {/* <p>for admin</p> */}
             {role && role === 'admin' ? <>
             <Link to="/dashboard/manageclass">
               <li>
@@ -77,7 +77,7 @@ const Dashboard = () => {
            
 
             {/* for students */}
-            <p>for students</p>
+            {/* <p>for students</p> */}
             {role && role === 'student' ? <>
             <Link to="/dashboard/my-selected-classes">
               <li>
