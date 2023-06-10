@@ -21,3 +21,13 @@ export const selectClass = async(yogaclass)=>{
         return data
     })
 }
+
+
+// get all selected my class
+export const allselectedmyclass = async (email) =>{
+    return fetch(`http://localhost:5000/users/selectclass/${email}`)
+    .then(res => res.json())
+    .then(data => {
+        return data
+    })
+}

@@ -35,6 +35,8 @@ const SingleClasses = ({yogaclass}) => {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                       // Save the disabled state in local storage
+        localStorage.setItem('selectedButtonDisabled', true);
                 }
                
               console.log(data);
