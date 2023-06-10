@@ -36,7 +36,7 @@ const SingleClasses = ({yogaclass}) => {
                         timer: 1500
                       })
                        // Save the disabled state in local storage
-        localStorage.setItem('selectedButtonDisabled', true);
+        // localStorage.setItem('selectedButtonDisabled', true);
                 }
                
               console.log(data);

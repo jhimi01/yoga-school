@@ -28,11 +28,13 @@ const AuthProvider = ({children}) => {
 
     // signup with email
     const signupEmail = (email, password)=>{
+        setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // log in with email 
     const loginWithEmail = (email, password)=>{
+        setLoader(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -48,6 +50,7 @@ const AuthProvider = ({children}) => {
 
     // login with google account
     const loginWithGoogle = ()=>{
+        setLoader(true)
         return signInWithPopup(auth, providerGoogle)
     }
 

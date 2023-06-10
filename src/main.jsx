@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         {path:'/dashboard/addclass', element: <AddClasses></AddClasses>},
         {path:'/dashboard/myclass', element: <InstructorClasses></InstructorClasses>},
         {path:'/dashboard/my-selected-classes', element: <MySelectedClass></MySelectedClass>},
-        {path:'/dashboard/manageclass', element: <p>manage classes</p>},
+        {path:'/dashboard/manageclass', element: <p>manage classes</p>}, //----------------------------------------------------------------
         {path:'/dashboard/manageuser', element: <ManageUser></ManageUser>},
         {path:'/dashboard/my-selected-classes', element: <p>My Selected classes</p>},
         {path:'/dashboard/my-enrolled-classes', element: <p>My enrolled classes</p>},

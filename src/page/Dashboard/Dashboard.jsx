@@ -17,8 +17,8 @@ const Dashboard = () => {
 
         <div className="flex text-center justify-center flex-col">
         <img src={user?.photoURL} className="rounded-full w-[80px] h-[80px] object-cover mx-auto" alt="" />
-            <h1>{user.displayName}</h1>
-            <p>{role}</p>
+            <h1 className="text-xl font-semibold">{user.displayName}</h1>
+            <p className="text-lg text-gray-400 uppercase">{role}</p>
         </div>
 
         <nav className="p-4">
