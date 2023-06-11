@@ -29,13 +29,11 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          reset();
       }).catch(error => {
         console.log(error.message)
         setError(error.message)
       })
-
-        console.log(data);
-        reset();
       };
 
       

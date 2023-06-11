@@ -63,7 +63,7 @@ const SingleClasses = ({yogaclass}) => {
             <div  
            
             className='mt-2'>
-            {user ?  <button onClick={()=>handleSelect(_id)} disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button> : <Link to='/login'><button onClick={()=>handleSelect(_id)} disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button></Link>}
+            {user ?  <button onClick={()=>handleSelect(_id)} disabled={availableSeats === 0 || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button> : <Link to='/login'><button disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button></Link>}
                 
             </div>
             </div>

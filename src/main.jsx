@@ -20,6 +20,12 @@ import AddClasses from './component/AddClasses/AddClasses';
 import InstructorClasses from './page/Instructor/InstructorClasses';
 import MySelectedClass from './component/MySelectedClass/MySelectedClass';
 import AdminManageClasses from './component/AdminManageClasses/AdminManageClasses';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -33,10 +39,9 @@ const router = createBrowserRouter([
       children:[
         {path:'/dashboard/addclass', element: <AddClasses></AddClasses>},
         {path:'/dashboard/myclass', element: <InstructorClasses></InstructorClasses>},
-        {path:'/dashboard/my-selected-classes', element: <MySelectedClass></MySelectedClass>},
-        {path:'/dashboard/manageclass', element: <AdminManageClasses>manage classes</AdminManageClasses>}, //----------------------------------------------------------------
+        {path:'/dashboard/manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
         {path:'/dashboard/manageuser', element: <ManageUser></ManageUser>},
-        {path:'/dashboard/my-selected-classes', element: <p>My Selected classes</p>},
+        {path:'/dashboard/my-selected-classes', element: <MySelectedClass></MySelectedClass>},
         {path:'/dashboard/my-enrolled-classes', element: <p>My enrolled classes</p>},
       ]
     },
@@ -53,7 +58,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <AuthProvider>
+      <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+    </QueryClientProvider>
+
       </AuthProvider>
   </React.StrictMode>,
 )

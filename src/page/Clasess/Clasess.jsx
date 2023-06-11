@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import SubBanner from '../../component/SubBanner';
 import { getAllClasses } from '../../api/class';
 import SingleClasses from './SingleClasses';
 
 const Clasess = () => {
-    const [classes, setClasses] = useState([])
+    // const [classes, setClasses] = useState([])
+    const { data: classes = [], error, isLoading } = useQuery({
+        queryKey: ['classes'],
+        queryFn: async ()=>{
+            const data = await getAllClasses()
+            return data
+        }
+    })
 
-    useEffect(()=>{
-        getAllClasses()
-        .then(data => {
-            setClasses(data)
-        })
-    },[])
-    //  const approvedClasses = classes.filter(class => class.status === 'approved');
+    // if (isLoading) {
+    //     // Handle loading state
+    //     return <div>Loading...</div>;
+    //   }
+
+
+    // useEffect(()=>{
+    //     getAllClasses()
+    //     .then(data => {
+    //         setClasses(data)
+    //     })
+    // },[])
+
     const approvedClasses = classes.filter((singleClass) => singleClass.status === 'approved');
 
     return (

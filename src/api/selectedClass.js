@@ -31,21 +31,6 @@ export const allselectedmyclass = async (email) => {
   return data;
 };
 
-// delete my selected class
-// export const deletemyselectedclass = async (id) => {
-//     return fetch(`http://localhost:5000/users/selectclass/delete/${id}`, {
-//       method: 'DELETE',
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data)
-//       return data;
-//     });
-//   };
-
-
-
-
 
 // delete my selected class
 export const deletemyselectedclass = async (id) => {
