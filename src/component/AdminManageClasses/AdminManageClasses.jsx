@@ -50,22 +50,68 @@ const AdminManageClasses = () => {
   const handlDeny = (id) => {
 
     fetch(`http://localhost:5000/users/addclass/deny/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-      // Handle the response from the server
-      console.log(result);
-    })
-    .catch(error => {
-      // Handle the error
-      console.error(error);
-    });
-  }
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setShouldRefetch(!shouldRefetch)
+          Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Class has been Approved',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          console.log(data)});
+    };
+
+    // const handleFeedback = () => {
+    //     Swal.fire({
+    //       title: 'Submit your feedback',
+    //       input: 'textarea',
+    //       inputAttributes: {
+    //         autocapitalize: 'off'
+    //       },
+    //       showCancelButton: true,
+    //       confirmButtonText: 'Submit',
+    //       showLoaderOnConfirm: true,
+    //       preConfirm: (feedback) => {
+    //         return fetch(`http://localhost:5000/feedback`, {
+    //           method: 'POST',
+    //           headers: {
+    //             'Content-Type': 'application/json'
+    //           },
+    //           body: JSON.stringify({ feedback })
+    //         })
+    //           .then(response => {
+    //             if (!response.ok) {
+    //               throw new Error(response.statusText)
+    //             }
+    //             return response.json()
+    //           })
+    //           .catch(error => {
+    //             Swal.showValidationMessage(
+    //               `Request failed: ${error}`
+    //             )
+    //           })
+    //       },
+    //       allowOutsideClick: () => !Swal.isLoading()
+    //     }).then((result) => {
+    //       if (result.isConfirmed) {
+    //         Swal.fire({
+    //           position: 'top-end',
+    //           icon: 'success',
+    //           title: 'Feedback submitted successfully',
+    //           showConfirmButton: false,
+    //           timer: 1500
+    //         })
+    //       }
+    //     })
+    //   };
+    
 
 //   deny status
 // const handleSubmit = (e) => {
@@ -159,7 +205,8 @@ const AdminManageClasses = () => {
                     <button onClick={() => handlDeny(item._id)} className="badge badge-ghost badge-lg">Deny</button>
                   </>
                 )}
-                <button
+                <button 
+                // onClick={handleFeedback}
                       className="badge badge-ghost badge-lg"
                     >
                       Feedback
