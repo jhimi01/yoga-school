@@ -16,10 +16,6 @@ const InstructorClasses = () => {
     })
   }
     useEffect(()=>{
-        // singleInstructorclasses(user.email)
-        // .then(data=> {
-        //     setInsClasses(data)
-        // })
         fetchInstructorclasses()
     },[user])
 
