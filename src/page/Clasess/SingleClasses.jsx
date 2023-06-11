@@ -5,6 +5,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { selectClass } from '../../api/selectedClass';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+import { Link, NavLink} from 'react-router-dom';
 
 const SingleClasses = ({yogaclass}) => {
     const { role, user} = useContext(AuthContext)
@@ -62,7 +63,8 @@ const SingleClasses = ({yogaclass}) => {
             <div  
            
             className='mt-2'>
-                <button onClick={()=>handleSelect(_id)} disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button>
+            {user ?  <button onClick={()=>handleSelect(_id)} disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button> : <Link to='/login'><button onClick={()=>handleSelect(_id)} disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button></Link>}
+                
             </div>
             </div>
         </div>

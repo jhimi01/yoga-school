@@ -3,15 +3,38 @@ import {
   deletemyselectedclass,
   // getmyselectedclass,
 } from "../../api/selectedClass";
+import Swal from "sweetalert2";
 // deletemyselectedclass,
 //index, item, fetchMyBookings
 const MySelectedClassSingle = ({ item }) => {
+
+  
   const handleDelete = async (id) => {
-    console.log(id)
-    deletemyselectedclass(id)
-      .then(data => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deletemyselectedclass(id)
+        .then(data => {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          console.log(data);
+        });
+       
+      }
+    })
+
+    
+  
   };
 
   const handleEnroll = () => {};
