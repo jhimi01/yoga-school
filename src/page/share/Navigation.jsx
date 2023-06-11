@@ -17,6 +17,8 @@ const Navigation = () => {
       });
   };
 
+  const total = selectClass.reduce((sum, item) => item.price + sum, 0)
+
   const navoptions = (
     <>
       <li className="font-bold">
@@ -150,7 +152,7 @@ const Navigation = () => {
                 >
                   <div className="card-body">
                     <span className="font-bold text-lg">{selectClass?.length || 0} Items</span>
-                    <span className="text-info">Subtotal: $999</span>
+                    <span className="text-info">Subtotal: ${total}</span>
                     <div className="card-actions">
                       {user && role === 'student' ? <Link to='/dashboard/my-selected-classes'><button className="btn btn-primary btn-block">
                         View cart

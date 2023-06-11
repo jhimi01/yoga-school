@@ -37,12 +37,12 @@ const router = createBrowserRouter([
       {path:'/classes', element: <Clasess />},
       {path:'/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute>,
       children:[
-        {path:'/dashboard/addclass', element: <AddClasses></AddClasses>},
-        {path:'/dashboard/myclass', element: <InstructorClasses></InstructorClasses>},
-        {path:'/dashboard/manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
-        {path:'/dashboard/manageuser', element: <ManageUser></ManageUser>},
-        {path:'/dashboard/my-selected-classes', element: <MySelectedClass></MySelectedClass>},
-        {path:'/dashboard/my-enrolled-classes', element: <p>My enrolled classes</p>},
+        {path:'addclass', element: <AddClasses></AddClasses>},
+        {path:'myclass', element: <InstructorClasses></InstructorClasses>},
+        {path:'manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
+        {path:'manageuser', element: <ManageUser></ManageUser>},
+        {path:'my-selected-classes', element: <MySelectedClass></MySelectedClass>},
+        {path:'my-enrolled-classes', element: <p>My enrolled classes</p>},
       ]
     },
       {path:'/login', element: <Login />},
