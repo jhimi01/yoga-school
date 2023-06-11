@@ -2,18 +2,27 @@ import { useContext, useEffect, useState } from "react";
 import { singleInstructorclasses } from "../../api/class";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import SingleInstructorClasses from "./SingleInstructorClasses";
+// import UpdateModal from "../../component/UpdateModal";
 
 const InstructorClasses = () => {
-    const [insClasses, setInsClasses] = useState([])
-    const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
+  const [insClasses, setInsClasses] = useState([])
+  // const [showUpdateModal, setShowUpdateModal] = useState(false);
 
+  const fetchInstructorclasses =()=> {
+    singleInstructorclasses(user.email)
+    .then(data=> {
+        setInsClasses(data)
+    })
+  }
     useEffect(()=>{
-        singleInstructorclasses(user.email)
-        .then(data=> {
-            setInsClasses(data)
-        })
-    },[])
-    console.log(insClasses)
+        // singleInstructorclasses(user.email)
+        // .then(data=> {
+        //     setInsClasses(data)
+        // })
+        fetchInstructorclasses()
+    },[user])
+
 
     return (
         <div>
@@ -33,15 +42,7 @@ const InstructorClasses = () => {
       </tr>
     </thead> 
     <tbody>
-      {/* <tr>
-        <th>1</th> 
-        <td>yoga name</td> 
-        <td>$ 56</td> 
-        <td>seat</td> 
-        <td>0</td> 
-        <td>pendong</td> 
-      </tr> */}
-      {insClasses.map((item, index) => <SingleInstructorClasses item={item} index={index} key={item._id}></SingleInstructorClasses>)}
+      {insClasses.map((item, index) => <SingleInstructorClasses fetchInstructorclasses={fetchInstructorclasses} item={item} index={index} key={item._id}></SingleInstructorClasses>)}
     </tbody> 
   </table>
 </div>

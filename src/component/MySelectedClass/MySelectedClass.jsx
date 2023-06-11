@@ -9,21 +9,15 @@ const MySelectedClass = () => {
     const { user } = useContext(AuthContext)
     const [selectedClass, setSelectedClass] = useState([])
 
-//    const fetchMyBookings = () =>{
-//     allselectedmyclass(user?.email)
-//     .then(data => {
-//         setSelectedClass(data)
-//     })
-//     }
+   const fetchMyBookings = () =>{
+    allselectedmyclass(user?.email)
+    .then(data => {
+        setSelectedClass(data)
+    })
+    }
     useEffect(()=>{
-        allselectedmyclass(user?.email)
-        .then(data => {
-            setSelectedClass(data)
-        })
-    // fetchMyBookings()
-    },[])
-    // console.log(selectedClass)
-
+      fetchMyBookings()
+    },[user])
     return (
         <div>
         <h2 className="text-center text-3xl my-5">My Seleted Class</h2>
@@ -49,7 +43,7 @@ const MySelectedClass = () => {
          ></MySelectedClassSingle>)
       } */}
      {
-        <MySelectedClassSingle item={selectedClass}></MySelectedClassSingle>
+        <MySelectedClassSingle item={selectedClass} fetchMyBookings={fetchMyBookings}></MySelectedClassSingle>
      }
     
     </tbody>

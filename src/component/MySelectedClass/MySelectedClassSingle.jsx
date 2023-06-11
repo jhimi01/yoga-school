@@ -6,7 +6,7 @@ import {
 import Swal from "sweetalert2";
 // deletemyselectedclass,
 //index, item, fetchMyBookings
-const MySelectedClassSingle = ({ item }) => {
+const MySelectedClassSingle = ({ item, fetchMyBookings }) => {
 
   
   const handleDelete = async (id) => {
@@ -29,7 +29,7 @@ const MySelectedClassSingle = ({ item }) => {
           )
           console.log(data);
         });
-       
+        fetchMyBookings()
       }
     })
 

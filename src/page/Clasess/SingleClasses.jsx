@@ -45,13 +45,13 @@ const SingleClasses = ({yogaclass}) => {
     }
 
     return (
-        <div>
+        <div className={`${availableSeats === 0?'bg-red-400':'bg-base-300'} my-5`}>
             <img className='h-[200px] w-full object-cover' src={classImage} alt="class img" />
-            <div className='text-center bg-base-300 pt-4'>
+            <div className='text-center  pt-4'>
                 <div className=''>
                     <h4 className='text-xl font-semibold'>Class: {className}</h4>
                     <h4 className='text-lg text-gray-600'>Price: ${price}</h4>
-                    <h4 className='text-lg text-gray-600'>Available Seats: {availableSeats}</h4>
+                    <h4 className={`${availableSeats === 0?'bg-red-100':'bg-base-300'} text-lg text-gray-600`}>Available Seats: {availableSeats}</h4>
                 </div>
                 <div className="divider" style={{margin: 1}}></div>
                 <div className=''>
