@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios'
 import Swal from 'sweetalert2';
 
 const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
@@ -9,6 +8,7 @@ const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
   const [classImage, setClassImage] = useState(item?.classImage);
   const [availableSeats, setAvailableSeats] = useState(item.price);
   const [price, setPrice] = useState(item.availableSeats);
+  console.log(item.feedback?.feedback)
   const openModal = () => {
     setIsModalOpen(true);
   }
@@ -206,7 +206,10 @@ const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
      }
     
     </th>
-      <td>not found</td>
+    <>
+    {item.feedback && item.feedback?.feedback ? <td>{item.feedback?.feedback}</td> :<td>not found</td>}
+    </>
+      {/* <td>not found</td> */}
       
     </tr>
 

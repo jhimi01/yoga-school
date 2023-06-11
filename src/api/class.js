@@ -57,3 +57,16 @@ export const singleInstructorclasses = async (email) => {
       throw error;
     }
   };
+
+
+export const adminClassFeedback = async (id, feedback)=>{
+ return fetch(`http://localhost:5000/users/feedback/${id}`, {
+  method: 'PUT',
+  headers: {
+    'content-type': 'application/json'
+  },body: JSON.stringify({feedback})
+}).then(res => res.json())
+.then(data => {
+  return data
+})
+}

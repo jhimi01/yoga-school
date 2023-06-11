@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { adminClassFeedback, getAllClasses } from "../../api/class";
 import Swal from "sweetalert2";
 
@@ -6,29 +6,20 @@ const AdminManageClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(false);
   const [feedback, setFeedback] = useState(false);
-    const [feedbackText, setFeedbackText] = useState("");
-    const [activeFeedbackId, setActiveFeedbackId] = useState(null);
+  const [feedbackText, setFeedbackText] = useState("");
+  const [activeFeedbackId, setActiveFeedbackId] = useState(null);
 
-  const fetchAllClass = () => {
+  const fetchAllClass = useCallback(() => {
     getAllClasses().then((data) => {
       setAllClasses(data);
     });
-  };
-
-
-// const fetchAllClass = useCallback(() => {
-//     getAllClasses().then((data) => {
-//       setAllClasses(data);
-//     });
-//   }, [shouldRefetch]);
-
+  }, [shouldRefetch]);
 
   useEffect(() => {
     fetchAllClass();
   }, [shouldRefetch]);
-  console.log(allClasses);
 
-  const handlApprove = (id) => {
+  const handleApprove = (id) => {
     fetch(`http://localhost:5000/users/addclass/approve/${id}`, {
       method: "PATCH",
       headers: {
@@ -37,81 +28,73 @@ const AdminManageClasses = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setShouldRefetch(!shouldRefetch)
+        setShouldRefetch(!shouldRefetch);
         Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Class has been Approved',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        console.log(data)});
+          position: 'top-end',
+          icon: 'success',
+          title: 'Class has been Approved',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(data);
+      });
   };
 
-
-  const handlDeny = (id) => {
-
+  const handleDeny = (id) => {
     fetch(`http://localhost:5000/users/addclass/deny/${id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setShouldRefetch(!shouldRefetch);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Class has been Denied',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(data);
+      });
+  };
+
+  const handleFeedback = (id) => {
+    setActiveFeedbackId(id);
+    setFeedback(!feedback);
+  };
+
+  const handleSubmitFeedback = (id) => {
+    if (feedbackText.trim() === "") {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Feedback',
+        text: 'Please enter a valid feedback message.',
+      });
+      return;
+    }
+
+    adminClassFeedback(id, feedbackText)
+      .then(() => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Feedback has been sent',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        setShouldRefetch(!shouldRefetch);
+        setActiveFeedbackId(null);
+        setFeedback(false);
+        setFeedbackText("");
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setShouldRefetch(!shouldRefetch)
-          Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Class has been Approved',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          console.log(data)});
-    };
-
-
-    const handleFeedback = (id) => {
-        setActiveFeedbackId(id);
-        setFeedback(!feedback);
-      };
-    
-      const handleSubmitFeedback = (id) => {
-        if (feedbackText.trim() === "") {
-          Swal.fire({
-            icon: 'error',
-            title: 'Invalid Feedback',
-            text: 'Please enter a valid feedback message.',
-          });
-          return;
-        }
-    
-        adminClassFeedback(id, feedbackText)
-          .then(() => {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Feedback has been sent',
-              showConfirmButton: false,
-              timer: 1500
-            });
-            setShouldRefetch(!shouldRefetch);
-            setActiveFeedbackId(null);
-            setFeedback(false);
-            setFeedbackText("");
-          })
-          .catch((error) => {
-            console.error(error);
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: `Feedback hasn't been sent`,
-                showConfirmButton: false,
-                timer: 1500
-              });
-          });
-      };
-
+      .catch((error) => {
+        console.error(error);
+        // Handle the error
+      });
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -159,45 +142,52 @@ const AdminManageClasses = () => {
               <th className="flex flex-col gap-3">
                 {item.status === "approved" || item.status === 'deny' ? (
                   <>
-                    <button disabled
+                    <button
+                      disabled
                       className="badge badge-ghost badge-lg text-gray-500"
-                    //   onClick={() => handlApprove(item._id)}
                     >
                       Approve
                     </button>
-                    <button  
-                    // onClick={() => handlApprove(item._id)}
+                    <button
                       disabled
-                     className="badge badge-ghost badge-lg text-gray-500">Deny</button>
+                      className="badge badge-ghost badge-lg text-gray-500"
+                    >
+                      Deny
+                    </button>
                   </>
                 ) : (
                   <>
                     <button
                       className="badge badge-ghost badge-lg"
-                      onClick={() => handlApprove(item._id)}
+                      onClick={() => handleApprove(item._id)}
                     >
                       Approve
                     </button>
-                    <button onClick={() => handlDeny(item._id)} className="badge badge-ghost badge-lg">Deny</button>
+                    <button
+                      className="badge badge-ghost badge-lg"
+                      onClick={() => handleDeny(item._id)}
+                    >
+                      Deny
+                    </button>
                   </>
                 )}
-                    <button
+                <button
                   className="badge badge-ghost badge-lg"
                   onClick={() => handleFeedback(item._id)}
                 >
                   Feedback
                 </button>
                 {feedback && activeFeedbackId === item._id && (
-                  <div className="flex gap-2 mt-2 fixed right-2">
+                  <div className="flex gap-2 mt-2">
                     <input
                       type="text"
                       placeholder="Enter your feedback"
                       value={feedbackText}
                       onChange={(e) => setFeedbackText(e.target.value)}
-                      className="input input-info"
+                      className="input input-bordered"
                     />
                     <button
-                      className="btn btn-info"
+                      className="btn btn-primary"
                       onClick={() => handleSubmitFeedback(item._id)}
                     >
                       Send
