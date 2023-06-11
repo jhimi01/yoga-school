@@ -6,14 +6,16 @@ import { selectClass } from '../../api/selectedClass';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
 import { Link, NavLink} from 'react-router-dom';
+import useCart from '../../hook/useCart';
 
 const SingleClasses = ({yogaclass}) => {
     const { role, user} = useContext(AuthContext)
     const {classImage,className, instructorEmail, instructorName,price,availableSeats, status, _id }  = yogaclass;
     const [disabled, setDisable] = useState(false)
+    const [, refetch] = useCart()
     
 
-    const handleSelect= (id)=>{
+    const handleSelect= ()=>{
         const currentClass = {
             email: user?.email,
             classImage,
@@ -28,19 +30,17 @@ const SingleClasses = ({yogaclass}) => {
           selectClass(currentClass)
             .then((data) => {
                 if (data.insertedId) {
+                    refetch()
                     setDisable(true)
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'top-center',
                         icon: 'success',
                         title: 'Your work has been saved',
                         showConfirmButton: false,
                         timer: 1500
-                      })
-                       // Save the disabled state in local storage
-        // localStorage.setItem('selectedButtonDisabled', true);
+                      });
+                      refetch()
                 }
-               
-              console.log(data);
             });
     }
 

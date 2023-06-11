@@ -4,10 +4,17 @@ import { SiLg } from 'react-icons/si';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useState } from 'react';
 import MySelectedClassSingle from './MySelectedClassSingle';
+import { useQuery } from '@tanstack/react-query';
+import useCart from '../../hook/useCart';
 
 const MySelectedClass = () => {
     const { user } = useContext(AuthContext)
     const [selectedClass, setSelectedClass] = useState([])
+    const [refetch, setRefetch] = useState(false)
+
+// const [selectedClass, refetch] = useCart()
+
+    
 
    const fetchMyBookings = () =>{
     allselectedmyclass(user?.email)
@@ -17,7 +24,8 @@ const MySelectedClass = () => {
     }
     useEffect(()=>{
       fetchMyBookings()
-    },[user])
+    },[refetch])
+
     return (
         <div>
         <h2 className="text-center text-3xl my-5">My Seleted Class</h2>
@@ -43,7 +51,11 @@ const MySelectedClass = () => {
          ></MySelectedClassSingle>)
       } */}
      {
-        <MySelectedClassSingle item={selectedClass} fetchMyBookings={fetchMyBookings}></MySelectedClassSingle>
+        <MySelectedClassSingle item={selectedClass} 
+        fetchMyBookings={fetchMyBookings}
+        //  refetch={refetch} 
+        setRefetch={setRefetch} refetch={refetch}
+         ></MySelectedClassSingle>
      }
     
     </tbody>

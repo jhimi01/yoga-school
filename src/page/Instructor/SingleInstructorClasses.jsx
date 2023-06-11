@@ -47,26 +47,7 @@ const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
       }
       fetchInstructorclasses()
     })
-    // axios
-    //   .put(`/instructors/class/update/${item._id}`, updatedClass)
-    //   .then((response) => {
-    //     console.log(response);
-    //     Swal.fire({
-    //       position: 'top-end',
-    //       icon: 'success',
-    //       title: 'Your work has been saved',
-    //       showConfirmButton: false,
-    //       timer: 1500
-    //     })
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Oops...',
-    //       text: 'Something went wrong!',
-    //     })
-    //   });
+
 
     };
 
