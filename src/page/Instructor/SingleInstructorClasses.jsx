@@ -28,7 +28,7 @@ const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
     };
 
 
-    fetch(`http://localhost:5000/instructors/class/update/${item._id}`,{
+    fetch(`https://yoga-school-server.vercel.app/instructors/class/update/${item._id}`,{
       method: 'PUT',
       headers:{
         'content-type': 'application/json',

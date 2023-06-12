@@ -29,7 +29,7 @@ const AdminManageClasses = () => {
   console.log(allClasses);
 
   const handlApprove = (id) => {
-    fetch(`http://localhost:5000/users/addclass/approve/${id}`, {
+    fetch(`https://yoga-school-server.vercel.app/users/addclass/approve/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -51,7 +51,7 @@ const AdminManageClasses = () => {
 
   const handlDeny = (id) => {
 
-    fetch(`http://localhost:5000/users/addclass/deny/${id}`, {
+    fetch(`https://yoga-school-server.vercel.app/users/addclass/deny/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

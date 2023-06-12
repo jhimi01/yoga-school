@@ -8,6 +8,7 @@ import useCart from "../../hook/useCart";
 const Navigation = () => {
   const { user, logout, role } = useContext(AuthContext);
   const [selectClass, refetch] = useCart()
+  console.log(role)
 
   const handleLogout = () => {
     logout()
@@ -57,10 +58,12 @@ const Navigation = () => {
           Classes
         </NavLink>
       </li>
-      {user && (
+
+  {/*==================== student  dashboard============*/}
+      {user && role === 'admin' ? (
         <li className="font-bold">
           <NavLink
-            to="/dashboard"
+            to="/dashboard/manageclass"
             className={({ isActive }) =>
               isActive
                 ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
@@ -70,7 +73,41 @@ const Navigation = () => {
             Dashboard
           </NavLink>
         </li>
-      )}
+      ) : ''}
+
+      {/*==================== student  dashboard============*/}
+      {user && role === 'student' ? (
+        <li className="font-bold">
+          <NavLink
+            to="/dashboard/my-selected-classes"
+            className={({ isActive }) =>
+              isActive
+                ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
+                : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : ''}
+
+
+       {/*==================== instructor  dashboard============*/}
+       {user && role === 'instructor' ? (
+        <li className="font-bold">
+          <NavLink
+            to="/dashboard/myclass"
+            className={({ isActive }) =>
+              isActive
+                ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
+                : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : ''}
+
       {/* <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Dashboard</NavLink></li> */}
     </>
   );

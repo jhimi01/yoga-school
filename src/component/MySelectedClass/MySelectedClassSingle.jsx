@@ -4,6 +4,7 @@ import {
   // getmyselectedclass,
 } from "../../api/selectedClass";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 // deletemyselectedclass,
 //index, item, fetchMyBookings
 const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) => {
@@ -39,7 +40,7 @@ const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) =
   
   };
 
-  const handleEnroll = () => {};
+
 
   return (
     <>
@@ -68,9 +69,10 @@ const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) =
             </button>
           </td>
           <td>
-            <button onClick={handleEnroll} className="btn">
+          <Link to={`/dashboard/my-enrolled-classes/${selectedClass._id}`}> <button>
               Enrolle
-            </button>
+            </button></Link>
+           
           </td>
         </tr>
       ))}

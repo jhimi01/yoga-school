@@ -24,6 +24,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import EnrollClass from './component/EnrollClass/EnrollClass';
 
 const queryClient = new QueryClient()
 
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         {path:'manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
         {path:'manageuser', element: <ManageUser></ManageUser>},
         {path:'my-selected-classes', element: <MySelectedClass></MySelectedClass>},
-        {path:'my-enrolled-classes', element: <p>My enrolled classes</p>},
+        {path:'my-enrolled-classes/:id', element: <EnrollClass></EnrollClass>},
       ]
     },
       {path:'/login', element: <Login />},

@@ -5,7 +5,7 @@ export const saveUser = user =>{
         photo: user.photoURL,
         role: 'student' // Set the role to "student"
     }
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+    fetch(`https://yoga-school-server.vercel.app/users/${user?.email}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -18,7 +18,7 @@ export const saveUser = user =>{
 
 export const getRole = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/users/role/${email}`);
+      const response = await fetch(`https://yoga-school-server.vercel.app/users/role/${email}`);
       if (response.ok) {
         const user = await response.json();
         return user?.[0]?.role; // Assuming the server returns an array with one user object
@@ -33,7 +33,7 @@ export const getRole = async (email) => {
 
   // get all user
 export const getAllUser = async()=>{
-    return  fetch(`http://localhost:5000/users`)
+    return  fetch(`https://yoga-school-server.vercel.app/users`)
     .then(res => res.json())
     .then(data =>{
         console.log(data)
@@ -44,7 +44,7 @@ export const getAllUser = async()=>{
 
 // make instructor to student
 export const makeInstructor = async (email) => {
-    return fetch(`http://localhost:5000/users/instructor/${email}`,{
+    return fetch(`https://yoga-school-server.vercel.app/users/instructor/${email}`,{
         method: 'PATCH',
         headers:{
             'content-type': 'application/json',
@@ -60,7 +60,7 @@ export const makeInstructor = async (email) => {
 
 // make instructor to student
 export const makeAdmin = async (email) => {
-    return fetch(`http://localhost:5000/users/admin/${email}`,{
+    return fetch(`https://yoga-school-server.vercel.app/users/admin/${email}`,{
         method: 'PATCH',
         headers:{
             'content-type': 'application/json',
@@ -77,7 +77,7 @@ export const makeAdmin = async (email) => {
 
 // instructor user
 export const allInsructor = async () =>{
-    return fetch('http://localhost:5000/users/instructor')
+    return fetch('https://yoga-school-server.vercel.app/users/instructor')
     .then(res => res.json())
     .then(data => {
         console.log(data)

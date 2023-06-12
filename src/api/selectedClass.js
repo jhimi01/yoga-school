@@ -1,5 +1,5 @@
 export const selectClass = async (yogaclass) => {
-  // return fetch(`http://localhost:5000/users/selectclass`, {
+  // return fetch(`https://yoga-school-server.vercel.app/users/selectclass`, {
   //     method: 'POST',
   //     headers: {'Content-Type': 'application/json'},
   //     body: JSON.stringify(currentClass)
@@ -15,7 +15,7 @@ export const selectClass = async (yogaclass) => {
     // _id: yogaclass._id,
   };
   
-  const res = await fetch(`http://localhost:5000/users/selectclass`, {
+  const res = await fetch(`https://yoga-school-server.vercel.app/users/selectclass`, {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(currentClass),
@@ -26,7 +26,7 @@ return data;
 
 // get all selected my class
 export const allselectedmyclass = async (email) => {
-  const res = await fetch(`http://localhost:5000/users/selectclass/${email}`);
+  const res = await fetch(`https://yoga-school-server.vercel.app/users/selectclass/${email}`);
   const data = await res.json();
   return data;
 };
@@ -35,7 +35,7 @@ export const allselectedmyclass = async (email) => {
 // delete my selected class
 export const deletemyselectedclass = async (id) => {
   const res = await fetch(
-    `http://localhost:5000/users/selectclass/delete/${id}`,
+    `https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`,
     {
       method: "DELETE",
     }
@@ -48,7 +48,7 @@ export const deletemyselectedclass = async (id) => {
 // get one my selected class
 // export const getmyselectedclass = async (id) => {
 //     const res = await fetch(
-//       `http://localhost:5000/users/selectclass/delete/${id}`    );
+//       `https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`    );
 //     const data = await res.json();
 //     console.log(data);
 //     return data;
@@ -57,11 +57,11 @@ export const deletemyselectedclass = async (id) => {
 // get one my selected class
 // export const getmyselectedclass = async (id) => {
 //   const res = await fetch(
-//     `http://localhost:5000/users/selectclass/delete/${id}`
+//     `https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`
 //   );
 //   const data = res.json();
 //   return data;
-//   // return fetch(`http://localhost:5000/users/selectclass/delete/${id}`)
+//   // return fetch(`https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`)
 //   //   .then((res) => res.json())
 //   //   .then((data) => {
 //   //     console.log(data);
