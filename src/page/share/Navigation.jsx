@@ -8,7 +8,7 @@ import useCart from "../../hook/useCart";
 const Navigation = () => {
   const { user, logout, role } = useContext(AuthContext);
   const [selectClass, refetch] = useCart()
-  console.log(role)
+  // console.log(role)
 
   const handleLogout = () => {
     logout()

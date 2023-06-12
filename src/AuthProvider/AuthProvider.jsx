@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config';
 import { getRole } from '../api/auth';
+import axios from 'axios';
 
 
 export const AuthContext = createContext(null)
@@ -56,21 +57,48 @@ const AuthProvider = ({children}) => {
 
     // log out
     const logout = ()=>{
+        setLoader(false)
+        localStorage.removeItem('access-token')
         return signOut(auth)
     };
 
 
 
     // user
-    useEffect(()=>{
-        const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
-            setUser(loggedInUser)
-            setLoader(false)
-        })
-        return()=>{
-            unsibscribe()
-        }
-    },[])
+    // useEffect(()=>{
+    //     const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
+    //         setUser(loggedInUser)
+    //        console.log(loggedInUser)
+
+    //     //    ------------- jwt ----------
+    //     if (loggedInUser) {
+    //         axios.post('http://localhost:5000/jwt', {email : loggedInUser?.email})
+    //         .then(data => {
+    //                 console.log(data.data.token)
+    //                 localStorage.setItem('access-token', data.data.token)
+    //                 setLoader(false)
+    //              })
+    //     }else{
+    //         localStorage.removeItem('access-token')
+    //         setLoader(false)
+    //     }
+      
+    //     })
+    //     return()=>{
+    //       return  unsibscribe()
+    //     }
+    // },[])
+        // user
+        useEffect(()=>{
+            const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
+                setUser(loggedInUser)
+                setLoader(false)
+            })
+            return()=>{
+                unsibscribe()
+            }
+        },[])
+    
 
 
 

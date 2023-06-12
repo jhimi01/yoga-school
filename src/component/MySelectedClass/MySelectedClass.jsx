@@ -17,7 +17,7 @@ const MySelectedClass = () => {
     
 
    const fetchMyBookings = () =>{
-    allselectedmyclass(user?.email)
+     allselectedmyclass(user?.email)
     .then(data => {
         setSelectedClass(data)
     })

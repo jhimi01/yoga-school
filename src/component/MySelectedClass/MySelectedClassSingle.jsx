@@ -5,9 +5,12 @@ import {
 } from "../../api/selectedClass";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useCart from "../../hook/useCart";
 // deletemyselectedclass,
 //index, item, fetchMyBookings
 const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) => {
+
+  // const [, refetch] = useCart()
 
   
   const handleDelete = async (id) => {

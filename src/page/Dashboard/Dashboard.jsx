@@ -2,6 +2,12 @@ import React, { useContext } from "react";
 import { AiFillHome } from "react-icons/ai";
 import { GiMeditation } from "react-icons/gi";
 import { AiFillFolderAdd } from "react-icons/ai";
+import { BiSelectMultiple } from "react-icons/bi";
+import { RiUserSharedFill } from "react-icons/ri";
+import { FaUsers } from "react-icons/fa";
+import { Fade } from "react-awesome-reveal";
+
+
 
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -10,6 +16,8 @@ const Dashboard = () => {
   const { user, role } = useContext(AuthContext);
   console.log(role);
   return (
+
+ 
     <div className="flex flex-col md:flex-row  mt-20 h-full">
       {/* Sidebar */}
       <aside className="w-full md:w-1/5">
@@ -23,10 +31,12 @@ const Dashboard = () => {
           <p className="text-lg text-gray-400 uppercase">{role}</p>
         </div>
 
+
         <nav className="p-4">
           <ul className="space-y-2">
-            {/* for instructor */}
-            {role && role === "instructor" ? (
+        <Fade cascade>
+             {/* for instructor */}
+             {role && role === "instructor" ? (
               <>
                 <NavLink
                   to="/dashboard/addclass"
@@ -43,14 +53,6 @@ const Dashboard = () => {
                   <li>
                     <a className="btn bg-base-300 rounded-none mb-4 w-full">
                       <GiMeditation className="text-2xl" /> My Class
-                    </a>
-                  </li>
-                </Link>
-
-                <Link to="/">
-                  <li>
-                    <a className="btn bg-base-300 rounded-none mb-4 w-full">
-                      <AiFillHome className="text-2xl" /> Home
                     </a>
                   </li>
                 </Link>
@@ -73,6 +75,7 @@ const Dashboard = () => {
                 <Link to="/dashboard/manageuser">
                   <li>
                     <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                    <FaUsers />
                       Manage Users
                     </a>
                   </li>
@@ -88,6 +91,7 @@ const Dashboard = () => {
                 <Link to="/dashboard/my-selected-classes">
                   <li>
                     <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                    <BiSelectMultiple className="text-2xl"/>
                       My Selected Classes
                     </a>
                   </li>
@@ -96,6 +100,7 @@ const Dashboard = () => {
                 <Link to="/dashboard/my-enrolled-classes">
                   <li>
                     <a className="btn bg-base-300 rounded-none mb-4 w-full">
+                    <RiUserSharedFill className="text-2xl"/>
                       My Enrolled Classes
                     </a>
                   </li>
@@ -104,6 +109,8 @@ const Dashboard = () => {
             ) : (
               ""
             )}
+</Fade>
+
           </ul>
         </nav>
       </aside>
@@ -111,7 +118,9 @@ const Dashboard = () => {
       {/* Main Content */}
       <main className="flex-grow p-4">
         {/* Content goes here */}
+        <Fade cascade>
         <Outlet></Outlet>
+        </Fade>
       </main>
     </div>
   );
