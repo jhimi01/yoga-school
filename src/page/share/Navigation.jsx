@@ -17,8 +17,13 @@ const Navigation = () => {
         console.log(errors);
       });
   };
+console.log(selectClass)
+if(selectClass?.error){
+  return <div>unauthorized</div>
+}
 
-  const total = selectClass.reduce((sum, item) => item.price + sum, 0)
+  const total = parseFloat(selectClass?.reduce((sum, item) => item?.price + sum, 0))
+
 
   const navoptions = (
     <>

@@ -24,7 +24,7 @@ const MySelectedClass = () => {
     }
     useEffect(()=>{
       fetchMyBookings()
-    },[refetch])
+    },[refetch, user?.email])
 
     return (
         <div>

@@ -28,13 +28,23 @@ return data;
 
 export const allselectedmyclass = async (email) => {
   console.log(email)
+  if(!email){
+    return []
+  }
   const res = await fetch(`http://localhost:5000/users/selectclass/${email}`, {
-    // headers: { authorization: `Bearer ${localStorage.getItem('access-token')}`}
+    headers: { authorization: `Bearer ${localStorage.getItem('access-token')}`}
   });
   const data = await res.json();
   return data;
 };
 
+// get a single item by id from all selectedclass
+export const singleitembyid = async (id) => {
+  const res = await fetch(`http://localhost:5000/users/selectclass/payment/${id}`);
+  const data = await res.json();
+  // console.log(data);
+  return data;
+};
 
 // delete my selected class
 export const deletemyselectedclass = async (id) => {
@@ -48,27 +58,3 @@ export const deletemyselectedclass = async (id) => {
   console.log(data);
   return data;
 };
-
-// get one my selected class
-// export const getmyselectedclass = async (id) => {
-//     const res = await fetch(
-//       `https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`    );
-//     const data = await res.json();
-//     console.log(data);
-//     return data;
-//   };
-
-// get one my selected class
-// export const getmyselectedclass = async (id) => {
-//   const res = await fetch(
-//     `https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`
-//   );
-//   const data = res.json();
-//   return data;
-//   // return fetch(`https://yoga-school-server.vercel.app/users/selectclass/delete/${id}`)
-//   //   .then((res) => res.json())
-//   //   .then((data) => {
-//   //     console.log(data);
-//   //     return data;
-//   //   });
-// };

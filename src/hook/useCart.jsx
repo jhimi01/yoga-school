@@ -9,7 +9,11 @@ const useCart = () => {
         queryKey: ['selectedClass', user?.email],
         // enabled: !AiOutlineLoading,
 
+       
         queryFn: async ()=>{
+            if (!user) {
+                return []
+            }
             const data = await allselectedmyclass(user?.email)
             return data
         },

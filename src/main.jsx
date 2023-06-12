@@ -26,6 +26,7 @@ import {
 } from '@tanstack/react-query';
 import EnrollClass from './component/EnrollClass/EnrollClass';
 import Payment from './page/Payment/Payment';
+import { singleitembyid } from './api/selectedClass';
 
 const queryClient = new QueryClient()
 
@@ -44,7 +45,12 @@ const router = createBrowserRouter([
         {path:'manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
         {path:'manageuser', element: <ManageUser></ManageUser>},
         {path:'my-selected-classes', element: <MySelectedClass></MySelectedClass>},
-        {path:'my-enrolled-classes/:id', element: <Payment></Payment>},
+          {
+            path: 'my-enrolled-classes/:id',
+            element: <Payment></Payment>,
+            loader: ({params})=>singleitembyid(params.id)
+          },
+          
       ]
     },
       {path:'/login', element: <Login />},

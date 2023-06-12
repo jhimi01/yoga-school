@@ -40,7 +40,9 @@ export const getAllClasses = async () => {
 
 export const singleInstructorclasses = async (email) => {
     try {
-      const response = await axios.get(`http://localhost:5000/instructors/${email}/classes`);
+      const response = await axios.get(`http://localhost:5000/instructors/${email}/classes`,{
+        headers: { authorization: `Bearer ${localStorage.getItem('access-token')}`}
+      });
       return response.data;
     } catch (error) {
       console.error(error);

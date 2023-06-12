@@ -18,7 +18,9 @@ export const saveUser = user =>{
 
 export const getRole = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/users/role/${email}`);
+      const response = await fetch(`http://localhost:5000/users/role/${email}`,{
+        // headers: { authorization: `Bearer ${localStorage.getItem('access-token')}`}
+      });
       if (response.ok) {
         const user = await response.json();
         return user?.[0]?.role; // Assuming the server returns an array with one user object

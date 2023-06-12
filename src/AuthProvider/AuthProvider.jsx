@@ -65,39 +65,42 @@ const AuthProvider = ({children}) => {
 
 
     // user
-    // useEffect(()=>{
-    //     const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
-    //         setUser(loggedInUser)
-    //        console.log(loggedInUser)
+    useEffect(()=>{
+        const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
+            setUser(loggedInUser)
+           console.log(loggedInUser)
 
-    //     //    ------------- jwt ----------
-    //     if (loggedInUser) {
-    //         axios.post('http://localhost:5000/jwt', {email : loggedInUser?.email})
-    //         .then(data => {
-    //                 console.log(data.data.token)
-    //                 localStorage.setItem('access-token', data.data.token)
-    //                 setLoader(false)
-    //              })
-    //     }else{
-    //         localStorage.removeItem('access-token')
-    //         setLoader(false)
-    //     }
+        //    ------------- jwt ----------
+        if (loggedInUser) {
+            axios.post('http://localhost:5000/jwt', {email : loggedInUser?.email})
+            .then(data => {
+                    console.log(data.data.token)
+                    localStorage.setItem('access-token', data.data.token)
+                    setLoader(false)
+                 })
+        }else{
+            localStorage.removeItem('access-token')
+            setLoader(false)
+        }
       
-    //     })
-    //     return()=>{
-    //       return  unsibscribe()
-    //     }
-    // },[])
-        // user
-        useEffect(()=>{
-            const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
-                setUser(loggedInUser)
-                setLoader(false)
-            })
-            return()=>{
-                unsibscribe()
-            }
-        },[])
+        })
+        return()=>{
+          return  unsibscribe()
+        }
+    },[])
+
+
+    // --------------------------------
+        // // user
+        // useEffect(()=>{
+        //     const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
+        //         setUser(loggedInUser)
+        //         setLoader(false)
+        //     })
+        //     return()=>{
+        //         unsibscribe()
+        //     }
+        // },[])
     
 
 
