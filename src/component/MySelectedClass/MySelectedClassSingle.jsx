@@ -34,10 +34,9 @@ const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) =
             'Your file has been deleted.',
             'success'
           )
-          console.log(data);
+          setRefetch(!refetch)
+          fetchMyBookings()
         });
-        setRefetch(!refetch)
-        fetchMyBookings()
         // refetch()
       }
     })

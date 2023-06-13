@@ -14,6 +14,7 @@ const Clasess = () => {
             return data
         }
     })
+    // return [classes, refetch]
 
     // if (isLoading) {
     //     // Handle loading state

@@ -24,7 +24,7 @@ const SingleClasses = ({yogaclass}) => {
             instructorName,
             price,
             availableSeats,
-            _id,
+            mySelectedClassid:_id,
           };
       
           selectClass(currentClass)

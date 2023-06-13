@@ -17,7 +17,7 @@ const Navigation = () => {
         console.log(errors);
       });
   };
-console.log(selectClass)
+// console.log(selectClass)
 if(selectClass?.error){
   return <div>unauthorized</div>
 }

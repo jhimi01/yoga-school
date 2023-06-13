@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const PaymentHistory = () => {
     const [payhistory, setPayhistory] = useState([])
+    const {user} = useContext(AuthContext)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/enrolled/class')
+        fetch(`http://localhost:5000/enrolled/class/${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setPayhistory(data)
@@ -20,12 +22,8 @@ const PaymentHistory = () => {
 
     return (
         <div>
-            payment history
-            <h2>{payhistory.length}</h2>
-            
-
-
-            <div className="overflow-x-auto w-full">
+           <h2>Payment History</h2>
+        {payhistory.length === 0 ? <h2 className='text-5xl'>You don't have any enrolled class yet</h2> :             <div className="overflow-x-auto w-full">
   <table className="table table-zebra">
     {/* head */}
     <thead>
@@ -54,7 +52,12 @@ const PaymentHistory = () => {
   
     </tbody>
   </table>
-</div>
+</div>}
+            
+            
+
+
+ 
         </div>
     );
 };

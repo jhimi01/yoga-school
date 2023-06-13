@@ -6,7 +6,7 @@ import { deletemyselectedclass } from "../../api/selectedClass";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, item }) => {
+const CheckoutForm = ({ price, item, filterid }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -88,15 +88,37 @@ const CheckoutForm = ({ price, item }) => {
         console.log(data);
         deletemyselectedclass(item._id)
         .then(data => {
-          Swal.fire(
-            'Enrolled!',
-            'Your successfuly enrolled.',
-            'success'
-          )
-          navigate('/dashboard/my-selected-classes')
+          // Swal.fire(
+          //   'Enrolled!',
+          //   'Your successfuly enrolled.',
+          //   'success'
+          // )
+          navigate('/dashboard/my-enrolled-classes')
           console.log(data);
         });
       });
+
+
+      // ----------- update class -----------
+// Update available seats and enrolled count
+axios
+.put(`http://localhost:5000/enrolled/update/${filterid._id}`, {
+  availableSeats: filterid.availableSeats - 1,
+  Enrolled: filterid.Enrolled + 1,
+})
+  .then((response) => {
+    console.log("Class updated successfully", response.data);
+    Swal.fire(
+      'Enrolled!',
+      'Your successfuly update.',
+      'success'
+    )
+  })
+  .catch((error) => {
+    console.log("Error updating class:", error);
+  });
+
+
 
     //  console.log(typeof item.availableSeates)
 
@@ -106,6 +128,12 @@ const CheckoutForm = ({ price, item }) => {
       const transactionId = paymentIntent.id;
     }
   };
+  // console.log(typeof item.availableSeats)
+  // console.log(typeof item.availableSeats - 1)
+
+  console.log(typeof item.availableSeats); // "number"
+console.log(typeof (item.availableSeats - 1)); // "number"
+
 
   return (
     <div>

@@ -12,7 +12,7 @@ export const selectClass = async (yogaclass) => {
     instructorName: yogaclass.instructorName,
     price: yogaclass.price,
     availableSeats: yogaclass.availableSeats,
-    // _id: yogaclass._id,
+    mySelectedClassid: yogaclass.mySelectedClassid,
   };
   
   const res = await fetch(`http://localhost:5000/users/selectclass`, {

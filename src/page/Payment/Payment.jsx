@@ -4,17 +4,43 @@ import { Helmet } from "react-helmet";
 import CheckoutForm from "./checkoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useQuery } from "@tanstack/react-query";
+import { getAllClasses } from "../../api/class";
 
 const Payment = () => {
   const item = useLoaderData();
-  console.log(item);
-
+  // console.log(item);
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
-  // console.log(typeof item.price)
+
+  // get all classes to update available seat and enrolled classes
+  const { data: classes = [], error, isLoading, refetch } = useQuery({
+    queryKey: ['classes'],
+    queryFn: async ()=>{
+        const data = await getAllClasses()
+        return data
+    }
+})
+// console.log(typeof item.availableSeats)
+
+  if (isLoading) {
+    // Handle loading state
+    return <div>Loading...</div>;
+  }
+
+  const updateeneollAvailability = classes.filter(itemclass => itemclass._id === item.mySelectedClassid)
+console.log('updateeneollAvailability',updateeneollAvailability[0] )
+const filterid = updateeneollAvailability[0]
+
+
+
+
   const itemPrice = (item?.price).toFixed(2);
   const price = parseFloat(itemPrice)
-  // console.log(typeof price)
+
+// get approvedclasses 
+
+
   return (
     <div>
       <Helmet>
@@ -27,7 +53,7 @@ const Payment = () => {
       </div>
       <div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm price={price} item={item}></CheckoutForm>
+          <CheckoutForm price={price} item={item} updateeneollAvailability={updateeneollAvailability} filterid={filterid}></CheckoutForm>
         </Elements>
       </div>
     </div>

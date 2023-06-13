@@ -8,7 +8,7 @@ const SingleInstructorClasses = ({item, index, fetchInstructorclasses}) => {
   const [classImage, setClassImage] = useState(item?.classImage);
   const [availableSeats, setAvailableSeats] = useState(item.price);
   const [price, setPrice] = useState(item.availableSeats);
-  console.log(item.feedback?.feedback)
+  // console.log(item.feedback?.feedback)
   const openModal = () => {
     setIsModalOpen(true);
   }
