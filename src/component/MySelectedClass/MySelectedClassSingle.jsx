@@ -90,12 +90,6 @@ if(item?.error){
 <button>
 
 </button>
-            {/* <button
-              onClick={() => handleEnroll(selectedClass?._id)}
-              className="btn"
-            >
-              Enroll
-            </button> */}
           </td>
         </tr>
       ))}
