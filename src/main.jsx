@@ -27,6 +27,7 @@ import {
 import EnrollClass from './component/EnrollClass/EnrollClass';
 import Payment from './page/Payment/Payment';
 import { singleitembyid } from './api/selectedClass';
+import PaymentHistory from './page/Payment/PaymentHistory';
 
 const queryClient = new QueryClient()
 
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
         {path:'manageclass', element: <AdminManageClasses></AdminManageClasses>}, //
         {path:'manageuser', element: <ManageUser></ManageUser>},
         {path:'my-selected-classes', element: <MySelectedClass></MySelectedClass>},
+        {path:'my-enrolled-classes', element: <PaymentHistory></PaymentHistory>},
           {
             path: 'my-enrolled-classes/:id',
             element: <Payment></Payment>,

@@ -11,9 +11,10 @@ const Payment = () => {
 
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
+  // console.log(typeof item.price)
   const itemPrice = (item?.price).toFixed(2);
   const price = parseFloat(itemPrice)
-  console.log(typeof price)
+  // console.log(typeof price)
   return (
     <div>
       <Helmet>
@@ -26,7 +27,7 @@ const Payment = () => {
       </div>
       <div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm price={price}></CheckoutForm>
+          <CheckoutForm price={price} item={item}></CheckoutForm>
         </Elements>
       </div>
     </div>
