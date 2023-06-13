@@ -6,6 +6,7 @@ import { useState } from 'react';
 import MySelectedClassSingle from './MySelectedClassSingle';
 import { useQuery } from '@tanstack/react-query';
 import useCart from '../../hook/useCart';
+import { Helmet } from 'react-helmet';
 
 const MySelectedClass = () => {
     const { user } = useContext(AuthContext)
@@ -28,6 +29,9 @@ const MySelectedClass = () => {
 
     return (
         <div>
+           <Helmet>
+                <title>My Selected Class | DoYoga</title>
+            </Helmet>
         <h2 className="text-center text-3xl my-5">My Seleted Class</h2>
             <div className="overflow-x-auto">
   <table className="table table-xl text-center">

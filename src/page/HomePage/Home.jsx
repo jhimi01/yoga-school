@@ -8,13 +8,17 @@ import PopularClasess from './PopularClasess';
 import PopularInstructor from './PopularInstructor';
 import ExtraSection from './ExtraSection';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet';
 // Import the CSS module for customizing the AwesomeSlider
 // import styles from './AwesomeSlider.module.css';
 
 const Home = () => {
   return (
      <>
-       <div>
+       <div>  
+        <Helmet>
+                <title>Home | DoYoga</title>
+            </Helmet>
        <AwesomeSlider
       animation="cubeAnimation"
       className="slider-content"

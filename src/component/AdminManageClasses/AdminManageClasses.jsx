@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { adminClassFeedback, getAllClasses } from "../../api/class";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AdminManageClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
@@ -115,6 +116,9 @@ const AdminManageClasses = () => {
 
   return (
     <div className="overflow-x-auto">
+       <Helmet>
+                <title>Manage Class | DOYoga</title>
+            </Helmet>
       <table className="table">
         {/* head */}
         <thead className="bg-base-200">
@@ -156,7 +160,7 @@ const AdminManageClasses = () => {
               </td>
               <td>${item.price}</td>
               <td className="text-gray-400">{item.status}</td>
-              <th className="flex flex-col gap-3">
+              <th className="flex flex-col gap-3 relative">
                 {item.status === "approved" || item.status === 'deny' ? (
                   <>
                     <button disabled
@@ -188,7 +192,7 @@ const AdminManageClasses = () => {
                   Feedback
                 </button>
                 {feedback && activeFeedbackId === item._id && (
-                  <div className="flex gap-2 mt-2 fixed right-2">
+                  <div className="flex gap-2 mt-2 absolute right-2">
                     <input
                       type="text"
                       placeholder="Enter your feedback"

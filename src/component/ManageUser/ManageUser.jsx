@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { getAllUser, makeAdmin, makeInstructor } from "../../api/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ManageUser = () => {
   const { user, role } = useContext(AuthContext);
@@ -44,6 +45,9 @@ const ManageUser = () => {
 
   return (
     <div className="overflow-x-auto">
+       <Helmet>
+                <title>Manage user | DoYoga</title>
+            </Helmet>
       <table className="table">
         {/* head */}
         <thead className="bg-base-200">

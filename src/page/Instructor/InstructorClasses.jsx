@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { singleInstructorclasses } from "../../api/class";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import SingleInstructorClasses from "./SingleInstructorClasses";
+import { Helmet } from "react-helmet";
 // import UpdateModal from "../../component/UpdateModal";
 
 const InstructorClasses = () => {
@@ -22,6 +23,9 @@ const InstructorClasses = () => {
 
     return (
         <div>
+           <Helmet>
+                <title>My Added Classes | DOYoga</title>
+            </Helmet>
         <h2 className="text-center text-3xl my-5">My Classes</h2>
             <div className="overflow-x-auto">
   <table className="table table-xl table-zebra text-center">

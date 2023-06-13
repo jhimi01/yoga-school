@@ -21,6 +21,7 @@
     "react-awesome-reveal": "^4.2.3",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.11.2",

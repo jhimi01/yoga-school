@@ -85,7 +85,7 @@ if(item?.error){
           </td>
           <td>
           <Link to={`/dashboard/my-enrolled-classes/${selectedClass?._id}`}>
-  <button>Enroll</button>
+  <button className="btn">Enroll</button>
 </Link>
 <button>
 

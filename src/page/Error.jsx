@@ -15,7 +15,7 @@ const Error = () => {
         We are sorry, but the page you were looking for could not be found.
       </p>
        </div>
-          <button className='btn btn-neutral'><BiArrowBack/> <Link to='/'><p>Go back to home</p></Link></button>
+       <Link to='/'> <button className='btn btn-neutral'><BiArrowBack/><p>Go back to home</p></button></Link>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { addclass } from "../../api/class";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddClasses = () => {
   const { user } = useContext(AuthContext);
@@ -50,6 +51,9 @@ const AddClasses = () => {
 
   return (
     <div className="max-w-md mx-auto">
+       <Helmet>
+                <title>Add Class | DoYoga</title>
+            </Helmet>
       <form onSubmit={handleSubmit} className="space-y-6">
         <h2 className="text-5xl  text-center">Add class</h2>
         <div className="flex items-center justify-between">
