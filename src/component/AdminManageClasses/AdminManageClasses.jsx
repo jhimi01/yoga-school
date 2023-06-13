@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { adminClassFeedback, getAllClasses } from "../../api/class";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AdminManageClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
@@ -9,9 +10,10 @@ const AdminManageClasses = () => {
   const [feedback, setFeedback] = useState(false);
     const [feedbackText, setFeedbackText] = useState("");
     const [activeFeedbackId, setActiveFeedbackId] = useState(null);
+    const {user}= useContext(AuthContext)
 
   const fetchAllClass = () => {
-    getAllClasses().then((data) => {
+    getAllClasses(user.email).then((data) => {
       setAllClasses(data);
     });
   };
