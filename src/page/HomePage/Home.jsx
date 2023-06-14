@@ -21,7 +21,7 @@ const Home = () => {
             </Helmet>
        <AwesomeSlider
       animation="cubeAnimation"
-      // className="slider-content"
+      className="slider-content"
       >
 
 <div className="hero min-h-screen" style={{ backgroundImage: 'url("https://i.ibb.co/YZHLVkB/pexels-natalie-bond-3759660-1.jpg")', backgroundPosition: '100% 100%' }}>
