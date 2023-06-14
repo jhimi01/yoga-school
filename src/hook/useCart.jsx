@@ -5,10 +5,10 @@ import { useContext } from 'react';
 
 const useCart = () => {
     const { user } = useContext(AuthContext)
-    const {refetch , data: selectedClass = []} = useQuery({
+    const {refetch ,  data: selectedClass = []} = useQuery({
         queryKey: ['selectedClass', user?.email],
         // enabled: !AiOutlineLoading,
-
+enabled: !!user?.email && !!localStorage.getItem('access_token'),
        
         queryFn: async ()=>{
             if (!user) {

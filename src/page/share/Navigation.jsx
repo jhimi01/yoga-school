@@ -6,8 +6,8 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useCart from "../../hook/useCart";
 
 const Navigation = () => {
-  const { user, logout, role } = useContext(AuthContext);
-  const [selectClass, refetch] = useCart()
+  const { user, logout, role, loader } = useContext(AuthContext);
+  const [selectClass, refetch] = useCart() || []
   // console.log(role)
 
   const handleLogout = () => {
@@ -17,10 +17,11 @@ const Navigation = () => {
         console.log(errors);
       });
   };
-// console.log(selectClass)
-if(selectClass?.error){
-  return <div>unauthorized</div>
+console.log(selectClass)
+if(selectClass?.errors){
+  return 
 }
+console.log(selectClass)
 
   const total = parseFloat(selectClass?.reduce((sum, item) => item?.price + sum, 0))
 

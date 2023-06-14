@@ -46,7 +46,6 @@ const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refet
     
   
   };
-
 if(item?.error){
   return <div>unauthorized</div>
 }
