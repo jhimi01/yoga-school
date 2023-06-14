@@ -29,7 +29,7 @@ const Home = () => {
   <Fade cascade>
   <div  className="hero-content text-center text-neutral-content">
     <div className="w-4/5">
-    <h4 className='subheading'>Welcome to Yogabest</h4>
+    <h4 className='subheading'>Welcome to DoYoga</h4>
       <h1 className="md:text-5xl text-3xl fontStyle mb-3">Training Body and Mind Together</h1>
       <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
       <Button color="white">DoYoga</Button>
@@ -44,7 +44,7 @@ const Home = () => {
   <Fade cascade>
 <div className="hero-content text-center text-neutral-content">
     <div className="w-4/5">
-    <h4 className='subheading'>Welcome to Yogabest</h4>
+    <h4 className='subheading'>Welcome to DoYoga</h4>
       <h1 className="md:text-5xl text-3xl fontStyle">Yoga Enhances Your Life</h1>
       <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
     <Button color="pink">DoYoga</Button>
@@ -60,7 +60,7 @@ const Home = () => {
 <Fade cascade>
 <div className="hero-content text-center text-neutral-content">
     <div className="w-4/5">
-    <h4 className='subheading'>Welcome to Yogabest</h4>
+    <h4 className='subheading'>Welcome to DoYoga</h4>
       <h1 className="md:text-5xl text-3xl fontStyle">Providing the Calm You Need</h1>
       <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
       <Button color="#0071be">DoYoga</Button>
@@ -76,7 +76,7 @@ const Home = () => {
   <Fade cascade>
         <div className="hero-content text-center text-neutral-content">
     <div className="w-4/5">
-    <h4 className='subheading'>Welcome to Yogabest</h4>
+    <h4 className='subheading'>Welcome to DoYoga</h4>
       <h1 className="md:text-5xl text-3xl fontStyle">Have a Balance of Perfect Body and Calm Soul</h1>
       <p className="mb-5 peraghrapStyle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
       <Button color="#b5ad9f">DoYoga</Button>
