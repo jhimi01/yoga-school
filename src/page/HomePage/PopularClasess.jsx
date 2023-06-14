@@ -10,7 +10,9 @@ const PopularClasess = () => {
   useEffect(() => {
     getAllClasses().then((data) => {
         const sortClass = data.sort(
-            (a, b) => a.availableSeats - b.availableSeats
+          (a, b) => b.Enrolled - a.Enrolled
+
+            // (a, b) => a.availableSeats - b.availableSeats
         );
         console.log(sortClass)
       setPopularClass(data);
