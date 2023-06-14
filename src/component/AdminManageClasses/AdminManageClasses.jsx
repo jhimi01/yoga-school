@@ -13,7 +13,7 @@ const AdminManageClasses = () => {
     const {user}= useContext(AuthContext)
 
   const fetchAllClass = () => {
-    getAllClasses(user.email).then((data) => {
+    getAllClasses().then((data) => {
       setAllClasses(data);
     });
   };

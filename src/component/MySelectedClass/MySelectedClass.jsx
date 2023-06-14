@@ -46,22 +46,22 @@ const MySelectedClass = () => {
     </thead>
     <tbody>
       {/* row 1 */}
-      {/* {
+      {
         selectedClass.map((item, index) =>  <MySelectedClassSingle 
         key={item._id}
          item={item}
          index={index}
         //  fetchMyBookings={fetchMyBookings}
          ></MySelectedClassSingle>)
-      } */}
-     {
+      }
+     {/* {
         <MySelectedClassSingle item={selectedClass} 
         fetchMyBookings={fetchMyBookings}
         //  refetch={refetch} 
         setRefetch={setRefetch} refetch={refetch}
          ></MySelectedClassSingle>
      }
-    
+     */}
     </tbody>
   </table>
 </div>

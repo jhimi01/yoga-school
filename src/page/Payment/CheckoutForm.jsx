@@ -17,7 +17,8 @@ const CheckoutForm = ({ price, item, filterid }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://yoga-school-server.vercel.app/create-payment-intent", {
+    // fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -75,7 +76,8 @@ const CheckoutForm = ({ price, item, filterid }) => {
     //  posting enrolled classs
     // client code
     axios
-      .post("http://localhost:5000/enrolled/class", {
+      .post("https://yoga-school-server.vercel.app/enrolled/class", {
+      // .post("http://localhost:5000/enrolled/class", {
         studentEmail: item.email,
         className: item.className,
         instructorEmail: item.instructorEmail,
@@ -88,11 +90,11 @@ const CheckoutForm = ({ price, item, filterid }) => {
         console.log(data);
         deletemyselectedclass(item._id)
         .then(data => {
-          // Swal.fire(
-          //   'Enrolled!',
-          //   'Your successfuly enrolled.',
-          //   'success'
-          // )
+          Swal.fire(
+            'Enrolled!',
+            'Your successfuly enrolled.',
+            'success'
+          )
           navigate('/dashboard/my-enrolled-classes')
           console.log(data);
         });
@@ -102,17 +104,18 @@ const CheckoutForm = ({ price, item, filterid }) => {
       // ----------- update class -----------
 // Update available seats and enrolled count
 axios
-.put(`http://localhost:5000/enrolled/update/${filterid._id}`, {
+.put(`https://yoga-school-server.vercel.app/enrolled/update/${filterid._id}`, {
+// .put(`http://localhost:5000/enrolled/update/${filterid._id}`, {
   availableSeats: filterid.availableSeats - 1,
   Enrolled: filterid.Enrolled + 1,
 })
   .then((response) => {
     console.log("Class updated successfully", response.data);
-    Swal.fire(
-      'Enrolled!',
-      'Your successfuly update.',
-      'success'
-    )
+    // Swal.fire(
+    //   'Enrolled!',
+    //   'Your successfuly update.',
+    //   'success'
+    // )
   })
   .catch((error) => {
     console.log("Error updating class:", error);

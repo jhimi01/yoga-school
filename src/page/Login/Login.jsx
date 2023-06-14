@@ -59,7 +59,7 @@ const Login = () => {
     return (
         <div className='md:flex items-center justify-between mt-20'>
         <div className='w-full h-[100vh]'>
-        <img className='w-full h-full object-cover' src="https://i.ibb.co/SR4R2td/pexels-ju-soar-s-16849536.jpg" alt="" />
+        <img className='w-full h-full object-cover' src="https://i.ibb.co/cJFZXNs/pexels-hatice-baran-14252564-1.jpg" alt="" />
       </div>
       <div className='w-full'>
       <h1 className='text-5xl font-semibold text-center'>Please Login</h1>

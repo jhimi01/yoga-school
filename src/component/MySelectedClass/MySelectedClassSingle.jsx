@@ -10,10 +10,12 @@ import Payment from "../../page/Payment/Payment";
 import { Link } from "react-router-dom";
 // deletemyselectedclass,
 //index, item, fetchMyBookings
-const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) => {
+const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refetch }) => {
 
   // const [, refetch] = useCart()
   // const history = useHistory();
+
+  console.log(item._id)
 
   
   const handleDelete = async (id) => {
@@ -45,45 +47,38 @@ const MySelectedClassSingle = ({ item, fetchMyBookings, setRefetch, refetch }) =
   
   };
 
-  // const handleEnroll = (id) => {
-  //   window.location.href = `/dashboard/my-enrolled-classes/${id}`;
-  //   console.log(id)
-  // };
-
-
-
 if(item?.error){
   return <div>unauthorized</div>
 }
 
   return (
     <>
-      {item?.map((selectedClass, index) => (
-        <tr key={selectedClass?._id} className="hover">
+      {
+        item.length === 0 ? <h2>not found</h2> :  <tr key={item?._id} className="hover">
           <th>{index + 1}</th>
           <td>
             <div className="flex items-center space-x-3">
               <div className="avatar">
                 <div className="mask mask-squircle w-12 h-12">
                   <img
-                    src={selectedClass?.classImage}
+                    src={item?.classImage}
                     alt="Avatar Tailwind CSS Component"
                   />
                 </div>
               </div>
               <div>
-                <div className="font-bold">{selectedClass?.className}</div>
+                <div className="font-bold">{item?.className}</div>
               </div>
             </div>
           </td>
-          <td>${selectedClass?.price}</td>
+          <td>${item?.price}</td>
           <td>
-            <button onClick={() => handleDelete(selectedClass?._id)} className="btn">
+            <button onClick={() => handleDelete(item?._id)} className="btn">
               Delete
             </button>
           </td>
           <td>
-          <Link to={`/dashboard/my-enrolled-classes/${selectedClass?._id}`}>
+          <Link to={`/dashboard/my-enrolled-classes/${item?._id}`}>
   <button className="btn">Enroll</button>
 </Link>
 <button>
@@ -91,7 +86,7 @@ if(item?.error){
 </button>
           </td>
         </tr>
-      ))}
+      }
     </>
   );
 };

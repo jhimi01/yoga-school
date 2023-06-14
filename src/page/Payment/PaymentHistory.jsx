@@ -6,7 +6,8 @@ const PaymentHistory = () => {
     const {user} = useContext(AuthContext)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/enrolled/class/${user?.email}`)
+        fetch(`https://yoga-school-server.vercel.app/enrolled/class/${user?.email}`)
+        // fetch(`http://localhost:5000/enrolled/class/${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setPayhistory(data)
@@ -45,7 +46,7 @@ const PaymentHistory = () => {
         <td>{item?.instructorName}</td>
         <td>{convertTimestamp(item.timestamp)}</td>
         <td>{item?.card}</td>
-        <td>{item?.classPrice}</td>
+        <td>${item?.classPrice}</td>
       </tr> // Convert and display the timestamp in a readable format
                 ))}
         
