@@ -45,7 +45,7 @@ const SingleClasses = ({yogaclass}) => {
     }
 
     return (
-        <div className={`${availableSeats === 0?'bg-red-400':'bg-base-300'}`}>
+        <div className={`${availableSeats < 1?'bg-red-400':'bg-base-300'}`}>
             <img className='h-[200px] w-full object-cover' src={classImage} alt="class img" />
             <div className='text-center  pt-4'>
                 <div className=''>
@@ -64,7 +64,7 @@ const SingleClasses = ({yogaclass}) => {
            
             className='mt-2'>
             {user ? 
-             <button onClick={()=>handleSelect(_id)} disabled={availableSeats === 0 || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button> :
+             <button onClick={()=>handleSelect(_id)} disabled={availableSeats < 1 || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'>{disabled? 'selected':'select'}</button> :
               <Link to='/login'><button 
               disabled={disabled || role === 'instructor' || role === 'admin'} className='btn bg-base-200 rounded-none w-full'
               >{disabled? 'selected':'select'}</button></Link>}
