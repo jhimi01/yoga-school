@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { allselectedmyclass } from '../../api/selectedClass';
+import { allselectedmyclass, deletemyselectedclass } from '../../api/selectedClass';
 import { SiLg } from 'react-icons/si';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useState } from 'react';
@@ -7,6 +7,7 @@ import MySelectedClassSingle from './MySelectedClassSingle';
 import { useQuery } from '@tanstack/react-query';
 import useCart from '../../hook/useCart';
 import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2';
 
 const MySelectedClass = () => {
     const { user } = useContext(AuthContext)
@@ -14,8 +15,6 @@ const MySelectedClass = () => {
     const [refetch, setRefetch] = useState(false)
 
 // const [selectedClass, refetch] = useCart()
-
-    
 
    const fetchMyBookings = () =>{
      allselectedmyclass(user?.email)
@@ -25,7 +24,32 @@ const MySelectedClass = () => {
     }
     useEffect(()=>{
       fetchMyBookings()
-    },[refetch, user?.email, selectedClass.length])
+    },[refetch, user?.email])
+
+
+    // ------------------------------------------------ modified code ---------------------------------------
+    const handleDelete = async (id) => {
+      try {
+        const result = await Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!',
+        });
+  
+        if (result.isConfirmed) {
+          await deletemyselectedclass(id);
+          setRefetch(!refetch);
+          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        }
+      } catch (error) {
+        console.error(error);
+        Swal.fire('Error!', 'An error occurred while deleting the class.', 'error');
+      }
+    };
 
     return (
         <div>
@@ -51,17 +75,13 @@ const MySelectedClass = () => {
         key={item._id}
          item={item}
          index={index}
-        //  fetchMyBookings={fetchMyBookings}
+         fetchMyBookings={fetchMyBookings}
+         handleDelete={handleDelete}
+         setRefetch={setRefetch}
+         refetch={refetch}
          ></MySelectedClassSingle>)
       }
-     {/* {
-        <MySelectedClassSingle item={selectedClass} 
-        fetchMyBookings={fetchMyBookings}
-        //  refetch={refetch} 
-        setRefetch={setRefetch} refetch={refetch}
-         ></MySelectedClassSingle>
-     }
-     */}
+
     </tbody>
   </table>
 </div>

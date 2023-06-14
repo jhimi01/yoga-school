@@ -8,17 +8,45 @@ import Swal from "sweetalert2";
 import useCart from "../../hook/useCart";
 import Payment from "../../page/Payment/Payment";
 import { Link } from "react-router-dom";
-// deletemyselectedclass,
-//index, item, fetchMyBookings
-const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refetch }) => {
 
-  // const [, refetch] = useCart()
-  // const history = useHistory();
+const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refetch ,handleDelete }) => {
+
+
 
   console.log(item._id)
 
   
-  const handleDelete = async (id) => {
+  // const handleDelete = async (id) => {
+  //   Swal.fire({
+  //     title: 'Are you sure?',
+  //     text: "You won't be able to revert this!",
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'Yes, delete it!'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       deletemyselectedclass(id)
+  //       .then(data => {
+  //         if (data.deletedCount > 0) {
+  //           Swal.fire(
+  //             'Deleted!',
+  //             'Your file has been deleted.',
+  //             'success'
+  //           )
+  //           setRefetch(!refetch)
+  //           fetchMyBookings()
+  //         }
+  //       });
+  //       // refetch()
+  //     }
+  //   })
+  // };
+
+
+
+  const handleDeleteClick = (id) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -26,26 +54,18 @@ const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refet
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        deletemyselectedclass(id)
-        .then(data => {
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-          setRefetch(!refetch)
-          fetchMyBookings()
-        });
-        // refetch()
+        handleDelete(id);
       }
-    })
-
-    
-  
+    });
   };
+
+
+
+
+
 if(item?.error){
   return <div>unauthorized</div>
 }
@@ -72,7 +92,10 @@ if(item?.error){
           </td>
           <td>${item?.price}</td>
           <td>
-            <button onClick={() => handleDelete(item?._id)} className="btn">
+            <button 
+            // onClick={() => handleDelete(item?._id)} 
+            onClick={() => handleDeleteClick(item?._id)}
+            className="btn">
               Delete
             </button>
           </td>

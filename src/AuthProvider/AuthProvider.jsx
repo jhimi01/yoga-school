@@ -22,7 +22,6 @@ const AuthProvider = ({children}) => {
             .then((data)=>{
                 setRole(data)
             })
-            
         }
     },[user])
 
