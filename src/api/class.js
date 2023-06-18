@@ -2,7 +2,6 @@ import axios from 'axios';
 // add class 
 export const addclass = async (classItems) =>{
  return fetch('https://yoga-school-server.vercel.app/users/addclass', {
-//  return fetch('http://localhost:5000/users/addclass', {
     method: 'POST',
     headers : {'Content-Type': 'application/json'},
     body : JSON.stringify(classItems)
@@ -19,29 +18,12 @@ export const addclass = async (classItems) =>{
 export const getAllClasses = async () => {
   try {
     const response = await axios.get('https://yoga-school-server.vercel.app/users/addclass');
-    // const response = await axios.get('http://localhost:5000/users/addclass');
-    // const response = await axios.get(`https://yoga-school-server.vercel.app/users/addclass/${email}`,{
-    //   headers: { authorization: `Bearer ${localStorage.getItem('access-token')}`}
-    // });
     return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
-
-// update class
-
-
-// Get classes posted by a single instructor
-// export const singleInstructorclasses = async (email) => {
-//     return fetch(`https://yoga-school-server.vercel.app/instructors/${email}/classes`)
-//     .then(res => res.json())
-//     .then(data => {
-//         // console.log(data)
-//         return data
-//     });
-// }
 
 export const singleInstructorclasses = async (email) => {
     try {
@@ -62,7 +44,6 @@ export const singleInstructorclasses = async (email) => {
 
 export const adminClassFeedback = async (id, feedback)=>{
  return fetch(`https://yoga-school-server.vercel.app/users/feedback/${id}`, {
-//  return fetch(`http://localhost:5000/users/feedback/${id}`, {
   method: 'PUT',
   headers: {
     'content-type': 'application/json'

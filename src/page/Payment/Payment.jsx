@@ -9,7 +9,6 @@ import { getAllClasses } from "../../api/class";
 
 const Payment = () => {
   const item = useLoaderData();
-  // console.log(item);
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
 
@@ -21,7 +20,6 @@ const Payment = () => {
         return data
     }
 })
-// console.log(typeof item.availableSeats)
 
   if (isLoading) {
     // Handle loading state

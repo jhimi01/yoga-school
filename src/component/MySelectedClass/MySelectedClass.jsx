@@ -14,7 +14,6 @@ const MySelectedClass = () => {
     const [selectedClass, setSelectedClass] = useState([])
     const [refetch, setRefetch] = useState(false)
 
-// const [selectedClass, refetch] = useCart()
 
    const fetchMyBookings = () =>{
      allselectedmyclass(user?.email)
@@ -27,7 +26,6 @@ const MySelectedClass = () => {
     },[refetch, user?.email])
 
 
-    // ------------------------------------------------ modified code ---------------------------------------
     const handleDelete = async (id) => {
       try {
         const result = await Swal.fire({

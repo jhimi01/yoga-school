@@ -72,7 +72,6 @@ const AuthProvider = ({children}) => {
         //    ------------- jwt ----------
         if (loggedInUser) {
             axios.post('https://yoga-school-server.vercel.app/jwt', {email : loggedInUser?.email})
-            // axios.post('http://localhost:5000/jwt', {email : loggedInUser?.email})
             .then(data => {
                     console.log(data.data.token)
                     localStorage.setItem('access-token', data.data.token)
@@ -88,23 +87,6 @@ const AuthProvider = ({children}) => {
           return  unsibscribe()
         }
     },[])
-
-
-    // --------------------------------
-        // // user
-        // useEffect(()=>{
-        //     const unsibscribe = onAuthStateChanged(auth, loggedInUser =>{
-        //         setUser(loggedInUser)
-        //         setLoader(false)
-        //     })
-        //     return()=>{
-        //         unsibscribe()
-        //     }
-        // },[])
-    
-
-
-
 
     const authInfo={
       user,

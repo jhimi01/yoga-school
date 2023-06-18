@@ -6,7 +6,6 @@ import SingleClasses from './SingleClasses';
 import { Helmet } from 'react-helmet';
 
 const Clasess = () => {
-    // const [classes, setClasses] = useState([])
     const { data: classes = [], error, isLoading, refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async ()=>{
@@ -14,20 +13,7 @@ const Clasess = () => {
             return data
         }
     })
-    // return [classes, refetch]
 
-    // if (isLoading) {
-    //     // Handle loading state
-    //     return <div>Loading...</div>;
-    //   }
-
-
-    // useEffect(()=>{
-    //     getAllClasses()
-    //     .then(data => {
-    //         setClasses(data)
-    //     })
-    // },[])
 
     const approvedClasses = classes.filter((singleClass) => singleClass.status === 'approved');
 

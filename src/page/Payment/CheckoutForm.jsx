@@ -18,7 +18,6 @@ const CheckoutForm = ({ price, item, filterid }) => {
 
   useEffect(() => {
     fetch("https://yoga-school-server.vercel.app/create-payment-intent", {
-    // fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -73,18 +72,15 @@ const CheckoutForm = ({ price, item, filterid }) => {
     }
     console.log("paymentIntent", paymentIntent.amount / 100);
     console.log(item.availableSeats);
-    //  posting enrolled classs
-    // client code
     axios
       .post("https://yoga-school-server.vercel.app/enrolled/class", {
-      // .post("http://localhost:5000/enrolled/class", {
         studentEmail: item.email,
         className: item.className,
         instructorEmail: item.instructorEmail,
         instructorName: item.instructorName,
         classPrice: paymentIntent.amount / 100,
         card: paymentMethod.card.brand,
-        timestamp: new Date().getTime(), // Add a timestamp field with the current timestamp value
+        timestamp: new Date().getTime(), 
       })
       .then((data) => {
         console.log(data);
@@ -102,28 +98,18 @@ const CheckoutForm = ({ price, item, filterid }) => {
 
 
       // ----------- update class -----------
-// Update available seats and enrolled count
 axios
 .put(`https://yoga-school-server.vercel.app/enrolled/update/${filterid._id}`, {
-// .put(`http://localhost:5000/enrolled/update/${filterid._id}`, {
   availableSeats: filterid.availableSeats - 1,
   Enrolled: filterid.Enrolled + 1,
 })
   .then((response) => {
     console.log("Class updated successfully", response.data);
-    // Swal.fire(
-    //   'Enrolled!',
-    //   'Your successfuly update.',
-    //   'success'
-    // )
   })
   .catch((error) => {
     console.log("Error updating class:", error);
   });
 
-
-
-    //  console.log(typeof item.availableSeates)
 
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {
@@ -131,12 +117,6 @@ axios
       const transactionId = paymentIntent.id;
     }
   };
-  // console.log(typeof item.availableSeats)
-  // console.log(typeof item.availableSeats - 1)
-
-  console.log(typeof item.availableSeats); // "number"
-console.log(typeof (item.availableSeats - 1)); // "number"
-
 
   return (
     <div>

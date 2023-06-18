@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
 
 
 const img_hosting_token = import.meta.env.VITE_UPLOAD_TOKEN;
-// https://api.imgbb.com/1/upload
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -49,49 +48,6 @@ const Register = () => {
       }
 
 
-      // // upload img to imgbb
-      // const photo = data.photo[0];
-      // if (photo) {
-      //   const formData = new FormData();
-      //   formData.append('photo', photo)
-      //   // // console.log(photo);
-      //   // Rest of the code to send the request
-      //   fetch(img_hosting_url, {
-      //     method: 'POST',
-      //     body: formData
-      //   })
-      //   .then(res => res.json())
-      //   .then(imgResponse => {
-      //     const photoURL = imgResponse.data.display_url
-      //        // Call your registration or signup function here
-      // signupEmail(data.email, data.password)
-      // .then((result) => {
-      //   const loggedUser = result.user;
-      //   console.log(loggedUser);
-
-      //   updateUserProfile(data.name, photoURL)
-      //   .then(()=>{
-      //     saveUser(loggedUser)
-      //     setErrortectext('');
-      //     navigate(from, {replace: true})
-      //     Swal.fire({
-      //       position: 'top-end',
-      //       icon: 'success',
-      //       title: 'logged in successfully',
-      //       showConfirmButton: false,
-      //       timer: 1500
-      //     })
-      //     reset()
-      //   })
-      // }).catch(err => {
-      //   setErrortectext(err.message);
-      //   console.log(err)})
-      //   })
-      // } else {
-      //   // Handle the case when photo data is empty
-      //   console.log('No photo data available');
-      // }
-
       // Call your registration or signup function here
       signupEmail(data.email, data.password)
       .then((result) => {
@@ -125,85 +81,6 @@ const Register = () => {
 
   };
 
-
-
-  // submit button
-// const onSubmit = (data) => {
-//   if (data.password === data["confirm-password"]) {
-//     setErrortectext('');
-//     setPasswordMatch(false);
-
-//     const photo = data.photo[0];
-
-//     const formData = new FormData();
-//     formData.append('image', photo);
-
-//     fetch(img_hosting_url, {
-//       method: 'POST',
-//       body: formData
-//     })
-//     .then(res => res.json()) // Add return statement here
-//     .then(imgResponse => {
-//       console.log(imgResponse);
-//       // Further processing with the image response can be done here
-//     });
-
-//     signupEmail(data.email, data.password)
-//       .then((result) => {
-//         const loggedUser = result.user;
-//         console.log(loggedUser);
-
-//         updateUserProfile(data.name, data.photoURL)
-//           .then(() => {
-//             const saveUser ={ name: data.name, email: data.email };
-//           });
-//       })
-//       .catch(err => console.log(err));
-//     reset();
-//   } else {
-//     setErrortectext('Passwords do not match');
-//     setPasswordMatch(true);
-//     reset();
-//   }
-// };
-
-
-
-
-
-
-
-  // const onSubmit = (data) => {
-  //   if (data.password === data["confirm-password"]) {
-  //     setErrortectext('');
-  //     setPasswordMatch(false);
-  //     const photo = data.photo[0];
-  
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       console.log(reader.result); // Log the image data as a data URL
-  //     };
-  //     reader.readAsDataURL(photo); // Read the image file as a data URL
-  
-  //     signupEmail(data.email, data.password)
-  //       .then((result) => {
-  //         const loggedUser = result.user;
-  //         console.log(loggedUser);
-  
-  //         updateUserProfile(data.name, data.photoURL)
-  //           .then(() => {
-  //             const saveUser = { name: data.name, email: data.email };
-  //           });
-  //       })
-  //       .catch((err) => console.log(err));
-  //     reset();
-  //   } else {
-  //     setErrortectext('Passwords do not match');
-  //     setPasswordMatch(true);
-  //     reset();
-  //   }
-  // };
-  
 
 
   const handleGoogle=()=>{
@@ -259,15 +136,6 @@ const Register = () => {
             {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
           </div>
 
-
-          {/* <div className="form-control">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <input {...register("photo", { required: true })} type="file"  accept="image/*" placeholder="photo URL" className="input input-bordered rounded-none pt-2" />
-            {errors.photo && <span className="text-red-500 text-sm">This field is required</span>}
-          </div> */}
-
        
 
           {/* Password */}
@@ -319,11 +187,6 @@ const Register = () => {
   <span className="text-red-500 text-sm">Passwords do not match</span>
 )}
 
-
-{/* now make if the button will be disable initially after confirm password is correct make the button the button able to click  */}
-
-            {/* {!passwordMatch && <span className="text-red-500 text-sm">{errortext}</span>} */}
-            {/* {!passwordMatch ? <span className="text-red-500 text-sm">Passwords do not match</span> : ''} */}
 
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

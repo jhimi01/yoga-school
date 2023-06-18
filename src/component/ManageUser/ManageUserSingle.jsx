@@ -15,8 +15,6 @@ const ManageUserSingle = ({item, index, role, handleAdmin, handleInstructor, ins
         <th>
         <button
           onClick={() => handleAdmin(item.email)}
-
-        //   disabled={isUserAdmin || isUserInstructor || role === "instructor" || role === "admin"}
           className="btn btn-ghost btn-xs bg-base-200"
         >
             {item.role}
@@ -25,8 +23,6 @@ const ManageUserSingle = ({item, index, role, handleAdmin, handleInstructor, ins
         <th>
           <button
           onClick={() => handleInstructor(item.email)}
-
-        //   disabled={isUserAdmin || isUserInstructor || role === "instructor" || role === "admin"}
           className="btn btn-ghost btn-xs bg-base-200"
         >
             {item.role}

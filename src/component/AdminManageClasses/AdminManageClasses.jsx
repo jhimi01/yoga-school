@@ -19,13 +19,6 @@ const AdminManageClasses = () => {
   };
 
 
-// const fetchAllClass = useCallback(() => {
-//     getAllClasses().then((data) => {
-//       setAllClasses(data);
-//     });
-//   }, [shouldRefetch]);
-
-
   useEffect(() => {
     fetchAllClass();
   }, [shouldRefetch]);
@@ -167,12 +160,10 @@ const AdminManageClasses = () => {
                   <>
                     <button disabled
                       className="badge badge-ghost badge-lg text-gray-500"
-                    //   onClick={() => handlApprove(item._id)}
                     >
                       Approve
                     </button>
                     <button  
-                    // onClick={() => handlApprove(item._id)}
                       disabled
                      className="badge badge-ghost badge-lg text-gray-500">Deny</button>
                   </>

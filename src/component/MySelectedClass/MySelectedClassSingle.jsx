@@ -4,7 +4,7 @@ import {
   // getmyselectedclass,
 } from "../../api/selectedClass";
 import Swal from "sweetalert2";
-// import { useHistory } from "react-router-dom";
+
 import useCart from "../../hook/useCart";
 import Payment from "../../page/Payment/Payment";
 import { Link } from "react-router-dom";
@@ -14,36 +14,6 @@ const MySelectedClassSingle = ({ item, index, fetchMyBookings, setRefetch, refet
 
 
   console.log(item._id)
-
-  
-  // const handleDelete = async (id) => {
-  //   Swal.fire({
-  //     title: 'Are you sure?',
-  //     text: "You won't be able to revert this!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Yes, delete it!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       deletemyselectedclass(id)
-  //       .then(data => {
-  //         if (data.deletedCount > 0) {
-  //           Swal.fire(
-  //             'Deleted!',
-  //             'Your file has been deleted.',
-  //             'success'
-  //           )
-  //           setRefetch(!refetch)
-  //           fetchMyBookings()
-  //         }
-  //       });
-  //       // refetch()
-  //     }
-  //   })
-  // };
-
 
 
   const handleDeleteClick = (id) => {
@@ -93,7 +63,6 @@ if(item?.error){
           <td>${item?.price}</td>
           <td>
             <button 
-            // onClick={() => handleDelete(item?._id)} 
             onClick={() => handleDeleteClick(item?._id)}
             className="btn">
               Delete

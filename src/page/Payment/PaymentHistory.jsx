@@ -7,7 +7,6 @@ const PaymentHistory = () => {
 
     useEffect(()=>{
         fetch(`https://yoga-school-server.vercel.app/enrolled/class/${user?.email}`)
-        // fetch(`http://localhost:5000/enrolled/class/${user?.email}`)
         .then(res => res.json())
         .then(data => {
             setPayhistory(data)

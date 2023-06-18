@@ -58,7 +58,6 @@ const SingleClasses = ({yogaclass}) => {
                 <div className=''>
                     <h3 className='text-lg'>Instructor: {instructorName}</h3>
                     <h3 className='text-sm mt-1'><SiGmail className='inline-block text-red-800'/> : {instructorEmail}</h3>
-                    {/* <p>{status}</p> */}
                 </div>
 
             <div  

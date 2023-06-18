@@ -29,21 +29,12 @@
   }
 
   .fontStyle{
-    /* font-family: 'Josefin Slab', serif; */
-    /* font-family: 'Lora', serif; */
-    /* font-family: 'Manrope', sans-serif; */
-    /* font-family: 'Noto Sans JP', sans-serif; */
-    /* font-family: 'Open Sans', sans-serif; */
-    /* font-family: 'Poppins', sans-serif; */
-    /* font-family: 'Varela', sans-serif; */
-    /* font-family: 'Work Sans', sans-serif; */
     font-family: 'Reenie Beanie', cursive;
     line-height: 1.2;
     color: whitesmoke;
   }
 
   .subheading{
-    /* font-family: 'Reenie Beanie', cursive; */
     font-family: 'Josefin Slab', serif;
     color: whitesmoke;
     font-size: 17px;

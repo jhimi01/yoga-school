@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ShareTitle from "../../component/ShareTitle";
 import { getAllClasses } from "../../api/class";
 import SingleClasses from "../Clasess/SingleClasses";
-// import {Helmet} from "react-helmet";
 
 const PopularClasess = () => {
   const [popularClass, setPopularClass] = useState([]);
@@ -12,14 +11,12 @@ const PopularClasess = () => {
         const sortClass = data.sort(
           (a, b) => b.Enrolled - a.Enrolled
 
-            // (a, b) => a.availableSeats - b.availableSeats
         );
         console.log(sortClass)
       setPopularClass(data);
     });
   }, []);
 
-//   console.log(popularClass)
 
   return (
     <div>

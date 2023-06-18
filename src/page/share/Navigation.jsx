@@ -25,17 +25,6 @@ if(selectClass?.errors){
 }
 console.log(selectClass)
 
-  // const total = parseFloat(selectClass?.reduce((sum, item) => item?.price + sum, 0))
-
-
-
-  // if (selectClass === undefined || selectClass.length === 0) {
-  //   return null; // Render nothing until selectClass is loaded
-  // }
-
-  // const total = parseFloat(
-  //   selectClass.reduce((sum, item) => item.price + sum, 0)
-  // );
 
   const navoptions = (
     <>

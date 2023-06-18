@@ -8,7 +8,7 @@ const Button = ({children, color}) => {
         borderTopRightRadius: '20px',
         borderBottomRightRadius: '0',
         borderBottomLeftRadius: '20px',
-        backgroundColor: color, // Set the background color based on the "color" prop
+        backgroundColor: color, 
       };
     return (
         <div>

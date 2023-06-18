@@ -12,15 +12,6 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_messagingSenderId,
   appId: import.meta.env.VITE_appId
 
-
-  // apiKey: "AIzaSyDCMjPcYT9FIhbl3HUoeKeoKgqlhar-mKE",
-  // authDomain: "yoga-school-7a5bc.firebaseapp.com",
-  // projectId: "yoga-school-7a5bc",
-  // storageBucket: "yoga-school-7a5bc.appspot.com",
-  // messagingSenderId: "1072754004337",
-  // appId: "1:1072754004337:web:a9707245eb369802e6e6d0"
-
-
 };
 
 // Initialize Firebase
