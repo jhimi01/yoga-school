@@ -28,117 +28,6 @@ const Home = () => {
         <Helmet>
           <title>Home | DoYoga</title>
         </Helmet>
-        {/* <AwesomeSlider animation="cubeAnimation" className="slider-content">
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                'url("https://i.ibb.co/YZHLVkB/pexels-natalie-bond-3759660-1.jpg")',
-              backgroundPosition: "100% 100%",
-            }}
-          >
-            <div className="hero-overlay bg-opacity-30"></div>
-            <Fade cascade>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="w-4/5">
-                  <h4 className="subheading">Welcome to DoYoga</h4>
-                  <h1 className="md:text-5xl text-3xl fontStyle mb-3">
-                    Training Body and Mind Together
-                  </h1>
-                  <p className="mb-5 peraghrapStyle">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    texts. Separated they live in Bookmarksgrove.
-                  </p>
-                  <Button color="white">DoYoga</Button>
-                </div>
-              </div>
-            </Fade>
-          </div>
-
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                'url("https://i.ibb.co/fQcFDMw/pexels-kampus-production-6298301-1.jpg")',
-              backgroundPosition: "100% 100%",
-            }}
-          >
-            <div className="hero-overlay bg-opacity-50"></div>
-            <Fade cascade>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="w-4/5">
-                  <h4 className="subheading">Welcome to DoYoga</h4>
-                  <h1 className="md:text-5xl text-3xl fontStyle">
-                    Yoga Enhances Your Life
-                  </h1>
-                  <p className="mb-5 peraghrapStyle">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    texts. Separated they live in Bookmarksgrove.
-                  </p>
-                  <Button color="pink">DoYoga</Button>
-                </div>
-              </div>
-            </Fade>
-          </div>
-
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                'url("https://i.ibb.co/Gntztyf/pexels-chevanon-photography-317155-2.jpg")',
-              backgroundPosition: "100% 100%",
-            }}
-          >
-            <div className="hero-overlay bg-opacity-10"></div>
-            <Fade cascade>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="w-4/5">
-                  <h4 className="subheading">Welcome to DoYoga</h4>
-                  <h1 className="md:text-5xl text-3xl fontStyle">
-                    Providing the Calm You Need
-                  </h1>
-                  <p className="mb-5 peraghrapStyle">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    texts. Separated they live in Bookmarksgrove.
-                  </p>
-                  <Button color="#0071be">DoYoga</Button>
-                </div>
-              </div>
-            </Fade>
-          </div>
-
-          <div
-            className="hero min-h-screen"
-            style={{
-              backgroundImage:
-                'url("https://i.ibb.co/jJGYL6D/pexels-savanna-goldring-5184327-1.jpg")',
-              backgroundPosition: "100% 100%",
-              objectFit: "cover",
-            }}
-          >
-            <div className="hero-overlay bg-opacity-40"></div>
-            <Fade cascade>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="w-4/5">
-                  <h4 className="subheading">Welcome to DoYoga</h4>
-                  <h1 className="md:text-5xl text-3xl fontStyle">
-                    Have a Balance of Perfect Body and Calm Soul
-                  </h1>
-                  <p className="mb-5 peraghrapStyle">
-                    Far far away, behind the word mountains, far from the
-                    countries Vokalia and Consonantia, there live the blind
-                    texts. Separated they live in Bookmarksgrove.
-                  </p>
-                  <Button color="#b5ad9f">DoYoga</Button>
-                </div>
-              </div>
-            </Fade>
-          </div>
-        </AwesomeSlider> */}
-
         <div className="mt-20 relative">
           <span className="absolute  opacity-30 -z-20 top-0 left-0">
             <img src={flower2} className="" />
@@ -157,10 +46,9 @@ const Home = () => {
               <img className="h-full mx-auto mb-auto" src={yoga} alt="" />
             </div>
             <div data-aos="zoom-in" data-aos-duration="1500"
-             className="text-center space-y-10 w-full md:w-4/5 pt-12">
+             className="text-center space-y-10 w-full md:w-[70%] pt-12">
               <h1
-                style={{ letterSpacing: "3px" }}
-                className="flex-wrap flex items-center justify-center gap-1 text-5xl md:text-[70px] font-serif"
+                className="flex-wrap flex items-center justify-center gap-1 text-5xl md:text-[60px] font-serif"
               >
                 <span className="backdrop-filter px-3 backdrop-blur-lg">
                   Training
