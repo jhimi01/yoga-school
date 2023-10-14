@@ -28,6 +28,7 @@ import EnrollClass from './component/EnrollClass/EnrollClass';
 import Payment from './page/Payment/Payment';
 import { singleitembyid } from './api/selectedClass';
 import PaymentHistory from './page/Payment/PaymentHistory';
+import Faq from './page/HomePage/Faq';
 
 const queryClient = new QueryClient()
 
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       {path:'/', element: <Home />},
       {path:'/instructors', element: <Instructor />},
       {path:'/classes', element: <Clasess />},
+      {path:'/faq', element: <Faq />},
       {path:'/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute>,
       children:[
         {path:'addclass', element: <AddClasses></AddClasses>},

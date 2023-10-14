@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
@@ -55,6 +55,9 @@ const Login = () => {
           console.log(errors)
         })
       }
+      useEffect(()=>{
+        window.scroll(0, 0)
+      },[])
     
     return (
         <div className='md:flex items-center justify-between mt-20'>

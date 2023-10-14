@@ -14,6 +14,10 @@ const Clasess = () => {
         }
     })
 
+    useEffect(()=>{
+        window.scroll(0, 0)
+      },[])
+
 
     const approvedClasses = classes.filter((singleClass) => singleClass.status === 'approved');
 

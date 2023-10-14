@@ -8,6 +8,10 @@ const Instructor = () => {
     const [instructors, setInstructors] = useState([])
 
     useEffect(()=>{
+        window.scroll(0, 0)
+      },[])
+
+    useEffect(()=>{
         allInsructor()
         .then(data => {
             setInstructors(data)

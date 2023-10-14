@@ -103,6 +103,9 @@ const Register = () => {
     })
   }
 
+  useEffect(()=>{
+    window.scroll(0, 0)
+  },[])
 
   return (
     <div className='md:flex items-start justify-center'>

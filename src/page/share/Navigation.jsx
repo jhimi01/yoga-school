@@ -7,8 +7,7 @@ import useCart from "../../hook/useCart";
 
 const Navigation = () => {
   const { user, logout, role, loader } = useContext(AuthContext);
-  const [selectClass, refetch] = useCart() || []
-  // console.log(role)
+  const [selectClass, refetch] = useCart() || [];
 
   const handleLogout = () => {
     logout()
@@ -18,13 +17,11 @@ const Navigation = () => {
       });
   };
 
-  
-console.log(selectClass)
-if(selectClass?.errors){
-  return 
-}
-console.log(selectClass)
-
+  console.log(selectClass);
+  if (selectClass?.errors) {
+    return;
+  }
+  console.log(selectClass);
 
   const navoptions = (
     <>
@@ -64,9 +61,21 @@ console.log(selectClass)
           Classes
         </NavLink>
       </li>
+      <li className="font-bold">
+        <NavLink
+          to="/faq"
+          className={({ isActive }) =>
+            isActive
+              ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
+              : ""
+          }
+        >
+          FAQ
+        </NavLink>
+      </li>
 
-  {/*==================== student  dashboard============*/}
-      {user && role === 'admin' ? (
+      {/*==================== student  dashboard============*/}
+      {user && role === "admin" ? (
         <li className="font-bold">
           <NavLink
             to="/dashboard/manageclass"
@@ -79,10 +88,12 @@ console.log(selectClass)
             Dashboard
           </NavLink>
         </li>
-      ) : ''}
+      ) : (
+        ""
+      )}
 
       {/*==================== student  dashboard============*/}
-      {user && role === 'student' ? (
+      {user && role === "student" ? (
         <li className="font-bold">
           <NavLink
             to="/dashboard/my-selected-classes"
@@ -95,11 +106,12 @@ console.log(selectClass)
             Dashboard
           </NavLink>
         </li>
-      ) : ''}
+      ) : (
+        ""
+      )}
 
-
-       {/*==================== instructor  dashboard============*/}
-       {user && role === 'instructor' ? (
+      {/*==================== instructor  dashboard============*/}
+      {user && role === "instructor" ? (
         <li className="font-bold">
           <NavLink
             to="/dashboard/myclass"
@@ -112,13 +124,13 @@ console.log(selectClass)
             Dashboard
           </NavLink>
         </li>
-      ) : ''}
+      ) : (
+        ""
+      )}
 
-      {/* <li className='font-bold'><NavLink to='/dashboard' className={({ isActive}) =>   isActive ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"  : ""  }>Dashboard</NavLink></li> */}
     </>
   );
 
-  // fixed top-0 left-0 right-0 flex justify-center
 
   return (
     <div className="navbar top-0 z-10 fixed border-b backdrop-filter backdrop-blur-lg">
@@ -186,18 +198,28 @@ console.log(selectClass)
                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                       />
                     </svg>
-                    {/* <span className="badge badge-sm indicator-item">{selectClass?.length || 0}</span> */}
                   </div>
                 </label>
                 <div
                   tabIndex={0}
-                  className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+                  className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow-lg"
                 >
-                  <div className="card-body">
+                  <div
+                    className="p-4 bg-rose-200"
+                    style={{
+                      borderEndEndRadius: 0,
+                      borderTopLeftRadius: 0,
+                      border: "1px solid #95afc0",
+                    }}
+                  >
                     <div className="card-actions">
-                      {user && role === 'student' ? <Link to='/dashboard/my-selected-classes'><button className="btn btn-primary btn-block">
-                        View cart
-                      </button></Link>:''}
+                      {user && role === "student" ? (
+                        <Link to="/dashboard/my-selected-classes">
+                          <Button>View cart</Button>
+                        </Link>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>

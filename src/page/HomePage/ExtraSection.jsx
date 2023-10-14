@@ -4,8 +4,8 @@ import ShareTitle from '../../component/ShareTitle';
 const ExtraSection = () => {
   return (
     <div className='grid md:grid-cols-2 grid-cols-1'>
-      <div className='h-full md:h-auto md:max-h-[700px]'>
-        <img className='h-full w-full object-cover' src="https://i.ibb.co/W0qVBqc/pexels-roman-odintsov-8018922.jpg" alt="" />
+      <div className='h-[700px]'>
+        <img className=' w-full h-full' src="https://i.ibb.co/W0qVBqc/pexels-roman-odintsov-8018922.jpg" alt="" />
       </div>
 
       <div className='p-8 md:p-16'>
