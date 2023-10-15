@@ -29,7 +29,7 @@ const Home = () => {
           <title>Home | DoYoga</title>
         </Helmet>
         <div className="mt-20 relative">
-          <span className="absolute  opacity-30 -z-20 top-0 left-0">
+          <span className="absolute  opacity-40 -z-20 top-0 left-0">
             <img src={flower2} className="" />
           </span>
           <span className="absolute hidden lg:block opacity-30  top-40 right-0 -z-20">
