@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SubBanner from "../../component/SubBanner";
 
 const Faq = () => {
 
@@ -52,7 +53,9 @@ const Faq = () => {
 
 
   return (
-    <div className="container mx-auto p-5 mt-20">
+<>
+<SubBanner bannerimg={'https://images.unsplash.com/photo-1579126038374-6064e9370f0f?auto=format&fit=crop&q=80&w=1431&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} heading={'FAQ'}></SubBanner>
+    <div className="container mx-auto p-5">
         {faqData.map((qa, index)=> <div
         key={index}
         tabIndex={0}
@@ -72,6 +75,7 @@ const Faq = () => {
       
    
     </div>
+</>
   );
 };
 

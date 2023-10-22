@@ -26,7 +26,7 @@ const Clasess = () => {
            <Helmet>
                 <title>Class | DoYoga</title>
             </Helmet>
-              <SubBanner bannerimg={'https://i.ibb.co/tqL8Sgk/pexels-elina-fairytale-3822356-1.jpg'} heading={'Classes'}></SubBanner>
+              <SubBanner bannerimg={'https://images.unsplash.com/photo-1579126038374-6064e9370f0f?auto=format&fit=crop&q=80&w=1431&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} heading={'Classes'}></SubBanner>
               <div className='grid md:grid-col-3 gap-6 lg:grid-cols-4 my-10 grid-cols-1 mx-auto w-full md:w-5/6'>
               {approvedClasses.map((singleClass) => <SingleClasses yogaclass={singleClass} key={singleClass._id} refetch={refetch} />)}            
               </div>
