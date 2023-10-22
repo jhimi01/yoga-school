@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import ToggleMood from "../../component/ToggleMood";
 import Button from "../../component/Button";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -174,9 +173,6 @@ const Navigation = () => {
           <ul className="menu menu-horizontal px-1">{navoptions}</ul>
         </div>
         <div className="navbar-end items-center flex gap-5">
-          <div className="hidden lg:flex">
-            <ToggleMood></ToggleMood>
-          </div>
 
           {/* view cart */}
           {user && role === "student" ? (
