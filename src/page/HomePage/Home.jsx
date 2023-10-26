@@ -15,6 +15,9 @@ import flower from "../../../public/flower.png";
 import flower2 from "../../../public/flower2.png";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import Contact from "./Contact";
+import CTA from "./CTA";
+import Feature from "./Feature";
 
 
 
@@ -86,15 +89,24 @@ const Home = () => {
       </div>
 
       <div className="mt-28 mx-auto w-full md:w-5/6">
-        <ExtraSection></ExtraSection>
+        <ExtraSection />
       </div>
 
       <div className="my-20 ">
-        <PopularClasess></PopularClasess>
+        <Feature />
+      </div>
+      <div className="my-20 ">
+        <PopularClasess />
       </div>
 
       <div className="my-10">
-        <PopularInstructor></PopularInstructor>
+        <PopularInstructor />
+      </div>
+      <div className="my-10">
+        <Contact />
+      </div>
+      <div className="my-1">
+        <CTA />
       </div>
     </>
   );
