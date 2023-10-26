@@ -19,7 +19,7 @@ const PopularInstructor = () => {
         <div className='w-full md:w-5/6 mx-auto'>
             <ShareTitle subheading={'Polupar Instructor'} mainTitle={'DoYoga Trainer'}></ShareTitle>
 
-            <div className='grid md:grid-cols-2 grid-cols-1 gap-10 pt-10 w-full'>
+            <div className='grid md:grid-cols-3 grid-cols-1 gap-10 pt-10 w-full'>
             {instructor.slice(0, 6).map(item => <SingleInstructor instructor={item}></SingleInstructor>)}
             </div>
         </div>

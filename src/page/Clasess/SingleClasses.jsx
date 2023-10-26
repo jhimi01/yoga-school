@@ -45,7 +45,7 @@ const SingleClasses = ({yogaclass}) => {
     }
 
     return (
-        <div className={`${availableSeats < 1?'bg-red-400':'bg-base-300'}`}>
+        <div className={`shadow-lg ${availableSeats < 1?'bg-red-400':'bg-base-300'}`}>
             <img className='h-[200px] w-full object-cover' src={classImage} alt="class img" />
             <div className='text-center  pt-4'>
                 <div className=''>
