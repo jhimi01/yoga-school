@@ -80,36 +80,32 @@ const CheckoutForm = ({ price, item, filterid }) => {
         instructorName: item.instructorName,
         classPrice: paymentIntent.amount / 100,
         card: paymentMethod.card.brand,
-        timestamp: new Date().getTime(), 
+        timestamp: new Date().getTime(),
       })
       .then((data) => {
         console.log(data);
-        deletemyselectedclass(item._id)
-        .then(data => {
-          Swal.fire(
-            'Enrolled!',
-            'Your successfuly enrolled.',
-            'success'
-          )
-          navigate('/dashboard/my-enrolled-classes')
+        deletemyselectedclass(item._id).then((data) => {
+          Swal.fire("Enrolled!", "Your successfuly enrolled.", "success");
+          navigate("/dashboard/my-enrolled-classes");
           console.log(data);
         });
       });
 
-
-      // ----------- update class -----------
-axios
-.put(`https://yoga-school-server.vercel.app/enrolled/update/${filterid._id}`, {
-  availableSeats: filterid.availableSeats - 1,
-  Enrolled: filterid.Enrolled + 1,
-})
-  .then((response) => {
-    console.log("Class updated successfully", response.data);
-  })
-  .catch((error) => {
-    console.log("Error updating class:", error);
-  });
-
+    // ----------- update class -----------
+    axios
+      .put(
+        `https://yoga-school-server.vercel.app/enrolled/update/${filterid._id}`,
+        {
+          availableSeats: filterid.availableSeats - 1,
+          Enrolled: filterid.Enrolled + 1,
+        }
+      )
+      .then((response) => {
+        console.log("Class updated successfully", response.data);
+      })
+      .catch((error) => {
+        console.log("Error updating class:", error);
+      });
 
     setProcessing(false);
     if (paymentIntent.status === "succeeded") {

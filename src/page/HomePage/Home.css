@@ -1,53 +1,53 @@
 .slider-content {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .slider-content .hero {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: 100% 100%;
-    object-fit: cover;
-  }
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .awesome-slider .awssld__next {
-    border-width: 8px;
-    border-color: white;
-  }
-  
-  .awesome-slider .awssld__prev {
-    border-width: 8px;
-    border-color: white;
-  }
+.slider-content .hero {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: 100% 100%;
+  object-fit: cover;
+}
 
-  .awssld__content{
-    height: 110vh;
-  }
+.awesome-slider .awssld__next {
+  border-width: 8px;
+  border-color: white;
+}
 
-  .fontStyle{
-    font-family: 'Reenie Beanie', cursive;
-    line-height: 1.2;
-    color: whitesmoke;
-  }
+.awesome-slider .awssld__prev {
+  border-width: 8px;
+  border-color: white;
+}
 
-  .subheading{
-    font-family: 'Josefin Slab', serif;
-    color: whitesmoke;
-    font-size: 17px;
-  }
-  .peraghrapStyle{
-    font-family: 'Josefin Slab', serif; 
-    font-size: 20px;
-    color: whitesmoke;
-  }
+.awssld__content {
+  height: 110vh;
+}
 
- .awssld__bullets{
-    bottom: 18px;
-  }
-  .awssld__bullets .awssld__bullets--active {
-    background: #fff;
-  } 
+.fontStyle {
+  font-family: "Reenie Beanie", cursive;
+  line-height: 1.2;
+  color: whitesmoke;
+}
+
+.subheading {
+  font-family: "Josefin Slab", serif;
+  color: whitesmoke;
+  font-size: 17px;
+}
+.peraghrapStyle {
+  font-family: "Josefin Slab", serif;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.awssld__bullets {
+  bottom: 18px;
+}
+.awssld__bullets .awssld__bullets--active {
+  background: #fff;
+}

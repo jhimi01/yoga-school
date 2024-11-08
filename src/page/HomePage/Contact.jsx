@@ -5,7 +5,7 @@ import ShareTitle from "../../component/ShareTitle";
 const Contact = () => {
   return (
     <section className="w-full md:w-5/6 mx-auto body-font relative py-20">
-        <ShareTitle subheading={""} mainTitle={"Give a  Feedback"} />
+      <ShareTitle subheading={""} mainTitle={"Give a  Feedback"} />
       <div className="py-10 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
           <iframe
@@ -17,7 +17,7 @@ const Contact = () => {
             marginheight="0"
             marginwidth="0"
             scrolling="no"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5402312.162745291!2d92.82830062936057!3d25.88405947776515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdf94e135d5043%3A0x5c0691dfc23892d7!2sYouth%20Training%20Centre%2C%20Nagar%20Jalfy%2C%20Tangail.!5e0!3m2!1sen!2sbd!4v1698317508574!5m2!1sen!2sbd" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5402312.162745291!2d92.82830062936057!3d25.88405947776515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdf94e135d5043%3A0x5c0691dfc23892d7!2sYouth%20Training%20Centre%2C%20Nagar%20Jalfy%2C%20Tangail.!5e0!3m2!1sen!2sbd!4v1698317508574!5m2!1sen!2sbd"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
@@ -45,10 +45,10 @@ const Contact = () => {
         </div>
         <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
           <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-           Feedback
+            Feedback
           </h2>
           <p className="leading-relaxed mb-5 text-gray-600">
-          Share your valuable opinion
+            Share your valuable opinion
           </p>
           <div className="relative mb-4">
             <label for="name" className="leading-7 text-sm text-gray-600">

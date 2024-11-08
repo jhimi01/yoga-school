@@ -13,13 +13,11 @@ import yoga from "../../../public/yoga (1).png";
 import yoga2 from "../../../public/yoga3.png";
 import flower from "../../../public/flower.png";
 import flower2 from "../../../public/flower2.png";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Contact from "./Contact";
 import CTA from "./CTA";
 import Feature from "./Feature";
-
-
 
 const Home = () => {
   useEffect(() => {
@@ -48,11 +46,12 @@ const Home = () => {
             >
               <img className="h-full mx-auto mb-auto" src={yoga} alt="" />
             </div>
-            <div data-aos="zoom-in" data-aos-duration="1500"
-             className="text-center space-y-10 w-full md:w-[70%] pt-12">
-              <h1
-                className="flex-wrap flex items-center justify-center gap-1 text-5xl md:text-[60px] font-serif"
-              >
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+              className="text-center space-y-10 w-full md:w-[70%] pt-12"
+            >
+              <h1 className="flex-wrap flex items-center justify-center gap-1 text-5xl md:text-[60px] font-serif">
                 <span className="backdrop-filter px-3 backdrop-blur-lg">
                   Training
                 </span>

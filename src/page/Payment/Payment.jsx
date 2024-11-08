@@ -11,33 +11,35 @@ const Payment = () => {
   const item = useLoaderData();
   const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT);
 
-
   // get all classes to update available seat and enrolled classes
-  const { data: classes = [], error, isLoading, refetch } = useQuery({
-    queryKey: ['classes'],
-    queryFn: async ()=>{
-        const data = await getAllClasses()
-        return data
-    }
-})
+  const {
+    data: classes = [],
+    error,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["classes"],
+    queryFn: async () => {
+      const data = await getAllClasses();
+      return data;
+    },
+  });
 
   if (isLoading) {
     // Handle loading state
     return <div>Loading...</div>;
   }
 
-  const updateeneollAvailability = classes.filter(itemclass => itemclass._id === item.mySelectedClassid)
-console.log('updateeneollAvailability',updateeneollAvailability[0] )
-const filterid = updateeneollAvailability[0]
-
-
-
+  const updateeneollAvailability = classes.filter(
+    (itemclass) => itemclass._id === item.mySelectedClassid
+  );
+  console.log("updateeneollAvailability", updateeneollAvailability[0]);
+  const filterid = updateeneollAvailability[0];
 
   const itemPrice = (item?.price).toFixed(2);
-  const price = parseFloat(itemPrice)
+  const price = parseFloat(itemPrice);
 
-// get approvedclasses 
-
+  // get approvedclasses
 
   return (
     <div>
@@ -51,7 +53,12 @@ const filterid = updateeneollAvailability[0]
       </div>
       <div>
         <Elements stripe={stripePromise}>
-          <CheckoutForm price={price} item={item} updateeneollAvailability={updateeneollAvailability} filterid={filterid}></CheckoutForm>
+          <CheckoutForm
+            price={price}
+            item={item}
+            updateeneollAvailability={updateeneollAvailability}
+            filterid={filterid}
+          ></CheckoutForm>
         </Elements>
       </div>
     </div>

@@ -53,7 +53,7 @@ const Feature = () => {
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
                 <div className="p-2 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                 <TbBooks className="text-[#84e784] text-2xl"/>
+                  <TbBooks className="text-[#84e784] text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">
                   Open Education
@@ -71,8 +71,7 @@ const Feature = () => {
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
                 <div className="p-2 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                 <FcDocument className="text-[#84e784] text-2xl"/>
-                   
+                  <FcDocument className="text-[#84e784] text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">
                   Outreach
@@ -83,7 +82,6 @@ const Feature = () => {
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
                   taxidermy. Gastropub indxgo juice poutine.
                 </p>
-              
               </div>
             </div>
           </div>
