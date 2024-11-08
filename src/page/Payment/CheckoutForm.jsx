@@ -34,7 +34,7 @@ const CheckoutForm = ({ price, item, filterid }) => {
   const handleSubmit = async (event) => {
     // Block native form submission.
     event.preventDefault();
-
+  
     if (!stripe || !elements) {
       return;
     }
@@ -42,20 +42,24 @@ const CheckoutForm = ({ price, item, filterid }) => {
     if (card == null) {
       return;
     }
-    console.log(card);
+  
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
+  
     if (error) {
       console.log("[error]", error);
       setCardError(error.message);
+      return; // Prevent proceeding if there is an error with the payment method
     } else {
       setCardError("");
       console.log("[PaymentMethod]", paymentMethod);
     }
-
+  
     setProcessing(true);
+  
+    // Confirm payment
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -66,12 +70,20 @@ const CheckoutForm = ({ price, item, filterid }) => {
           },
         },
       });
-
+  
+    // If there is an error during payment confirmation, handle it
     if (confirmError) {
-      console.log(confirmError);
+      setCardError("Payment failed. Please try again.");
+      console.error(confirmError);
+      setProcessing(false);
+      return;
     }
+  
+    // If payment is successful, proceed with further actions
     console.log("paymentIntent", paymentIntent.amount / 100);
     console.log(item.availableSeats);
+  
+    // Handle post-payment logic (enrollment and class update)
     axios
       .post("https://yoga-school-server.vercel.app/enrolled/class", {
         studentEmail: item.email,
@@ -85,12 +97,12 @@ const CheckoutForm = ({ price, item, filterid }) => {
       .then((data) => {
         console.log(data);
         deletemyselectedclass(item._id).then((data) => {
-          Swal.fire("Enrolled!", "Your successfuly enrolled.", "success");
+          Swal.fire("Enrolled!", "You have successfully enrolled.", "success");
           navigate("/dashboard/my-enrolled-classes");
           console.log(data);
         });
       });
-
+  
     // ----------- update class -----------
     axios
       .put(
@@ -106,13 +118,15 @@ const CheckoutForm = ({ price, item, filterid }) => {
       .catch((error) => {
         console.log("Error updating class:", error);
       });
-
+  
     setProcessing(false);
+  
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentMethod.id);
       const transactionId = paymentIntent.id;
     }
   };
+  
 
   return (
     <div>
