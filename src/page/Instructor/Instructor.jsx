@@ -31,8 +31,8 @@ const Instructor = () => {
         heading={"Instructors"}
       ></SubBanner>
       <div className="grid md:grid-cols-3 lg:grid-cols-4 mt-32 grid-cols-1 mx-auto md:w-5/6 w-full gap-11">
-        {instructors.map((instructor) => (
-          <SingleInstructor instructor={instructor}></SingleInstructor>
+        {instructors.map((instructor, index) => (
+          <SingleInstructor key={index} instructor={instructor}></SingleInstructor>
         ))}
       </div>
     </div>

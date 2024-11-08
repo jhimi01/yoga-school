@@ -22,8 +22,8 @@ const PopularInstructor = () => {
       ></ShareTitle>
 
       <div className="grid md:grid-cols-3 grid-cols-1 gap-10 pt-10 w-full">
-        {instructor.slice(0, 6).map((item) => (
-          <SingleInstructor instructor={item}></SingleInstructor>
+        {instructor.slice(0, 6).map((item, index) => (
+          <SingleInstructor key={index} instructor={item}></SingleInstructor>
         ))}
       </div>
     </div>

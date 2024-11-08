@@ -1,11 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import CheckoutForm from "./checkoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useQuery } from "@tanstack/react-query";
 import { getAllClasses } from "../../api/class";
+import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
   const item = useLoaderData();
