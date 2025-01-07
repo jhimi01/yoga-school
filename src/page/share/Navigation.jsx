@@ -5,13 +5,13 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useCart from "../../hook/useCart";
 import { IoMdCart } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
-import yoga from "../../../public/yoga (1).png";
+import logo from "../../../public/logo/logo-white.png";
+// import yoga from "../../../public/yoga (1).png";
 
 const Navigation = () => {
   const { user, logout, role, loader } = useContext(AuthContext);
   const [selectClass, refetch] = useCart() || [];
   const { pathname } = useLocation(); // Get current pathname
-
 
   const handleLogout = () => {
     logout()
@@ -136,10 +136,10 @@ const Navigation = () => {
 
   return (
     <div
-    className={`navbar absolute z-10 backdrop-filter ${
-      pathname === "/" ? "" : "bg-gray-950"
-    }`}
-  >
+      className={`navbar absolute z-10 backdrop-filter ${
+        pathname === "/" ? "" : "bg-gray-950"
+      }`}
+    >
       <div className="w-5/6 mx-auto">
         <div className="navbar-start flex">
           <div className="dropdown">
@@ -159,9 +159,8 @@ const Navigation = () => {
               {navoptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-lg md:text-2xl font-bold text-white">
-            DoYoga
-          </a>
+          {/* DoYoga */}
+          <img src={logo} alt="logo" width={100} className="hidden md:block" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navoptions}</ul>
@@ -180,15 +179,15 @@ const Navigation = () => {
                   tabIndex={0}
                   className="dropdown-content w-40 mt-2 mr-auto border-none outline-0"
                 >
-                    <div className="card-actions">
-                      {user && role === "student" ? (
-                        <Link to="/dashboard/my-selected-classes">
-                          <Button>View cart</Button>
-                        </Link>
-                      ) : (
-                        ""
-                      )}
-                    </div>
+                  <div className="card-actions">
+                    {user && role === "student" ? (
+                      <Link to="/dashboard/my-selected-classes">
+                        <Button>View cart</Button>
+                      </Link>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -202,7 +201,7 @@ const Navigation = () => {
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
                     <img
-                      src={user?.photoURL || yoga}
+                      src={user?.photoURL}
                       alt="User Avatar"
                       className="w-full h-full object-cover"
                     />

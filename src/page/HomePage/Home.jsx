@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import "./Home.css";
-import Button from "../../component/Button";
 import PopularClasess from "./PopularClasess";
 import PopularInstructor from "./PopularInstructor";
 import ExtraSection from "./ExtraSection";
-import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet";
-
 import icon1 from "../../../public/icons/icon1.jpg";
 import icon2 from "../../../public/icons/icon2.jpg";
 import icon3 from "../../../public/icons/icon3.jpg";
-import tearing from "../../../public/Tearing.png";
 import tearing5 from "../../../public/tearing5.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -95,15 +90,15 @@ const Home = () => {
 
         {/* Text Overlay */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pt-36">
-          <div className="px-20  pt-12 space-y-7 bg-base-100">
-            <h1 className="text-xl capitalize font-semibold mb-5 text-center px-4">
+          <div className="md:px-20 px-5 md:pb-0 pb-5 pt-12 space-y-7 bg-base-100">
+            <h1 className="text-xl capitalize font-semibold mb-5 text-center md:px-4">
               yoga has countless benifits
             </h1>
-            <div className="flex lg:flex-nowrap flex-wrap gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-5">
               {benefits.map((item, index) => (
                 <div
                   key={index}
-                  className="text-center"
+                  className="text-justify md:text-center "
                   data-aos="zoom-in"
                   data-aos-easing="ease-in-out"
                   // data-aos-duration="800"
@@ -111,7 +106,7 @@ const Home = () => {
                   <img
                     src={item?.img}
                     alt="icon"
-                    className="w-14 h-14 mx-auto rounded-full"
+                    className="w-14 h-14 md:mx-auto rounded-full"
                   />
                   <h2 className="font-semibold my-2">{item?.title}</h2>
                   <p>{item?.desc}</p>
