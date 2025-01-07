@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import Button from "../../component/Button";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useCart from "../../hook/useCart";
+import { IoMdCart } from "react-icons/io";
+import { IoMenu } from "react-icons/io5";
+import yoga from "../../../public/yoga (1).png";
 
 const Navigation = () => {
   const { user, logout, role, loader } = useContext(AuthContext);
   const [selectClass, refetch] = useCart() || [];
+  const { pathname } = useLocation(); // Get current pathname
+
 
   const handleLogout = () => {
     logout()
@@ -29,8 +34,8 @@ const Navigation = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-              : ""
+              ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+              : "text-white"
           }
         >
           Home
@@ -41,8 +46,8 @@ const Navigation = () => {
           to="/instructors"
           className={({ isActive }) =>
             isActive
-              ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-              : ""
+              ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+              : "text-white"
           }
         >
           Instructors
@@ -53,8 +58,8 @@ const Navigation = () => {
           to="/classes"
           className={({ isActive }) =>
             isActive
-              ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-              : ""
+              ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+              : "text-white"
           }
         >
           Classes
@@ -65,8 +70,8 @@ const Navigation = () => {
           to="/faq"
           className={({ isActive }) =>
             isActive
-              ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-              : ""
+              ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+              : "text-white"
           }
         >
           FAQ
@@ -80,8 +85,8 @@ const Navigation = () => {
             to="/dashboard/manageclass"
             className={({ isActive }) =>
               isActive
-                ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-                : ""
+                ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+                : "text-white"
             }
           >
             Dashboard
@@ -98,8 +103,8 @@ const Navigation = () => {
             to="/dashboard/my-selected-classes"
             className={({ isActive }) =>
               isActive
-                ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
-                : ""
+                ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
+                : "text-white"
             }
           >
             Dashboard
@@ -116,7 +121,7 @@ const Navigation = () => {
             to="/dashboard/myclass"
             className={({ isActive }) =>
               isActive
-                ? "rounded-tl-none rounded-tr-2xl rounded-br-none rounded-bl-2xl bg-white"
+                ? "rounded-tl-none rounded-tr-xl rounded-br-none rounded-bl-xl text-white border"
                 : ""
             }
           >
@@ -126,31 +131,20 @@ const Navigation = () => {
       ) : (
         ""
       )}
-
     </>
   );
 
-
   return (
-    <div className="navbar top-0 z-10 fixed border-b backdrop-filter backdrop-blur-lg">
+    <div
+    className={`navbar absolute z-10 backdrop-filter ${
+      pathname === "/" ? "" : "bg-gray-950"
+    }`}
+  >
       <div className="w-5/6 mx-auto">
         <div className="navbar-start flex">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <IoMenu className="text-2xl text-white" />
             </label>
             <ul
               tabIndex={0}
@@ -160,12 +154,12 @@ const Navigation = () => {
                 borderBottomRightRadius: "0",
                 borderBottomLeftRadius: "20px",
               }}
-              className="menu menu-sm dropdown-content mt-5 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-5 p-2 shadow bg-slate-500 rounded-box w-52 text-white"
             >
               {navoptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-lg md:text-2xl font-bold">
+          <a className="btn btn-ghost normal-case text-lg md:text-2xl font-bold text-white">
             DoYoga
           </a>
         </div>
@@ -173,41 +167,19 @@ const Navigation = () => {
           <ul className="menu menu-horizontal px-1">{navoptions}</ul>
         </div>
         <div className="navbar-end items-center flex gap-5">
-
           {/* view cart */}
           {user && role === "student" ? (
             <div className="flex-none">
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                   <div className="indicator">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
+                    <IoMdCart className="text-2xl text-white" />
                   </div>
                 </label>
                 <div
                   tabIndex={0}
-                  className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow-lg"
+                  className="dropdown-content w-40 mt-2 mr-auto border-none outline-0"
                 >
-                  <div
-                    className="p-4 bg-rose-200"
-                    style={{
-                      borderEndEndRadius: 0,
-                      borderTopLeftRadius: 0,
-                      border: "1px solid #95afc0",
-                    }}
-                  >
                     <div className="card-actions">
                       {user && role === "student" ? (
                         <Link to="/dashboard/my-selected-classes">
@@ -217,7 +189,6 @@ const Navigation = () => {
                         ""
                       )}
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -230,7 +201,11 @@ const Navigation = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src={user?.photoURL} alt="User Avatar" />
+                    <img
+                      src={user?.photoURL || yoga}
+                      alt="User Avatar"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </label>
                 <ul
@@ -241,7 +216,7 @@ const Navigation = () => {
                     borderBottomRightRadius: "0",
                     borderBottomLeftRadius: "20px",
                   }}
-                  className=" p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 mt-5 font-bold"
+                  className="p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 mt-5 font-bold"
                 >
                   <li>
                     <a className="justify-between">

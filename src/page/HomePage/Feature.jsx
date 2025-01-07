@@ -6,7 +6,7 @@ import { TbBooks } from "react-icons/tb";
 
 const Feature = () => {
   return (
-    <section className="bg-green-50 py-10">
+    <section className="bg-base-200 py-10">
       <ShareTitle
         subheading={"What different from others"}
         mainTitle={"Features"}
@@ -16,7 +16,7 @@ const Feature = () => {
           <div className="p-4 text-center w-full">
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
-                <div className="p-2 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 flex-shrink-0">
+                <div className="p-2 mr-3 inline-flex items-center justify-center rounded-full bg-gray-500 flex-shrink-0">
                   <FcOnlineSupport className="text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">
@@ -34,7 +34,7 @@ const Feature = () => {
           <div className="p-4 text-center w-full">
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
-                <div className="inline-flex items-center justify-center rounded-full bg-indigo-500 flex-shrink-0 p-2">
+                <div className="inline-flex items-center justify-center rounded-full bg-gray-500 flex-shrink-0 p-2">
                   <CgCommunity className="text-[#fff] text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">
@@ -52,7 +52,7 @@ const Feature = () => {
           <div className="p-4 text-center w-full">
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
-                <div className="p-2 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <div className="p-2 inline-flex items-center justify-center rounded-full bg-gray-500 text-white flex-shrink-0">
                   <TbBooks className="text-[#84e784] text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">
@@ -70,7 +70,7 @@ const Feature = () => {
           <div className="p-4 text-center w-full">
             <div className="flex rounded-lg h-full bg-white p-8 flex-col">
               <div className="">
-                <div className="p-2 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
+                <div className="p-2 inline-flex items-center justify-center rounded-full bg-gray-500 text-white flex-shrink-0">
                   <FcDocument className="text-[#84e784] text-2xl" />
                 </div>
                 <h2 className="text-gray-900 text-lg title-font font-medium">

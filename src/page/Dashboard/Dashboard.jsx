@@ -14,7 +14,7 @@ const Dashboard = () => {
   const { user, role } = useContext(AuthContext);
   console.log(role);
   return (
-    <div className="flex flex-col md:flex-row  mt-20 h-full">
+    <div className="flex flex-col md:flex-row pt-24 h-full">
       {/* Sidebar */}
       <aside className="w-full md:w-1/5">
         <div className="flex text-center justify-center flex-col">

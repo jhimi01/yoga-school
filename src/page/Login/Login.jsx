@@ -67,7 +67,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="md:flex items-center justify-between mt-20">
+    <div className="md:flex items-center justify-between py-10">
       <div className="w-full h-[100vh]">
         <img
           className="w-full h-full object-cover"
@@ -144,8 +144,8 @@ const Login = () => {
             <input
               className="btn bg-base-300 rounded-none"
               type="submit"
-              value="signup"
-            />{" "}
+              value="Login"
+            />
             {/* Disable the button if passwords don't disabled={!passwordMatch} match */}
           </div>
           {error && <p className="text-red-700">{error}</p>}
