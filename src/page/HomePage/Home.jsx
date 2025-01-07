@@ -85,7 +85,7 @@ const Home = () => {
         {/* Image */}
         <img
           src={tearing5}
-          className="-mt-12 hidden md:block absolute top-0 left-0 w-full h-auto"
+          className="-mt-14 hidden md:block absolute top-0 left-0 w-full h-auto"
         />
 
         {/* Text Overlay */}
